@@ -1,0 +1,7 @@
+lxml
+pandas
+grpcio
+grpcio-tools
+xmlschema
+saxonche
+pg8000
