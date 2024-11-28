@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package server_services;
+
+// Request message
+message SendFileRequestBody {
+    bytes file = 1; // DTD file as bytes
+    string file_mime = 2;
+    string file_name = 3;
+}
+
+// Response message
+message SendFileResponseBody {
+    bool success = 1;
+}
+
+// Service definition
+service SendFileService {
+    rpc SendFile (SendFileRequestBody) returns (SendFileResponseBody);
+}
