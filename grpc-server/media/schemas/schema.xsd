@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="root">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Airport_Code" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" type="xs:int"/>
+              <xs:element name="ident" type="xs:string"/>
+              <xs:element name="type" type="xs:string"/>
+              <xs:element name="name" type="xs:string"/>
+              <xs:element name="latitude_deg" type="xs:float"/>
+              <xs:element name="longitude_deg" type="xs:float"/>
+              <xs:element name="elevation_ft" type="xs:int"/>
+              <xs:element name="continent" type="xs:string"/>
+              <xs:element name="iso_country" type="xs:string"/>
+              <xs:element name="iso_region" type="xs:string"/>
+              <xs:element name="municipality" type="xs:string"/>
+              <xs:element name="scheduled_service" type="xs:string"/>
+              <xs:element name="gps_code" type="xs:string"/>
+              <xs:element name="local_code" type="xs:string"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
