@@ -1,11 +1,13 @@
-from concurrent import futures
 from settings import GRPC_SERVER_PORT, MAX_WORKERS, MEDIA_PATH, DBNAME, DBUSERNAME, DBPASSWORD, DBHOST, DBPORT
+import pg8000
+from concurrent import futures
 import os
 import server_services_pb2_grpc
 import server_services_pb2
 import grpc
+import csv
 import logging
-import pg8000
+
 
 # Configure logging
 LOG_FORMAT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
@@ -56,6 +58,39 @@ class SendFileService(server_services_pb2_grpc.SendFileServiceServicer):
             );
             """
 
+            # Read the CSV file
+            with open(file_path, 'r') as f:
+                reader = csv.DictReader(f)
+                next(reader)  # Skip the header row
+                for row in reader:
+
+                    # SQL query to insert data into the table
+                    insert_query = """
+                    INSERT INTO data (ident, type, name, latitude_deg, longitude_deg, elevation_ft, 
+                    continent, iso_country, iso_region, municipality, scheduled_service, gps_code, local_code)
+                    SELECT %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s
+                    WHERE NOT EXISTS (
+                        SELECT 1 FROM data WHERE ident = %s
+                    );
+                    """
+
+                    cursor.execute(insert_query, (
+                        row['ident'],
+                        row['type'],
+                        row['name'],
+                        float(row['latitude_deg']) if row['latitude_deg'] else None,
+                        float(row['longitude_deg']) if row['longitude_deg'] else None,
+                        int(row['elevation_ft']) if row['elevation_ft'] else None,
+                        row['continent'],
+                        row['iso_country'],
+                        row['iso_region'],
+                        row['municipality'],
+                        row['scheduled_service'],
+                        row['gps_code'] if row['gps_code'] else None,
+                        row['local_code'] if row['local_code'] else None,
+                        row['ident']
+                    ))
+
             # Execute the SQL query to create the table
             cursor.execute(create_table_query)
             # Commit the changes (optional in this case since it's a DDL query)
@@ -66,6 +101,22 @@ class SendFileService(server_services_pb2_grpc.SendFileServiceServicer):
             context.set_details(f"Failed: {str(e)}")
             context.set_code(grpc.StatusCode.INTERNAL)
             return server_services_pb2.SendFileResponseBody(success=False)
+        
+class ImporterService(server_services_pb2_grpc.ImporterServiceServicer):
+
+    def __init__(self, *args, **kwargs):
+        pass
+
+    def ConvertToXML(self, request, context):
+        try:
+            # TODO: Implement the conversion logic
+            # ...
+            return server_services_pb2.XMLFileResponse(success=True)
+        except Exception as e:
+            logger.error(f"Error: {str(e)}", exc_info=True)
+            context.set_details(f"Failed: {str(e)}")
+            context.set_code(grpc.StatusCode.INTERNAL)
+            return server_services_pb2.XMLFileResponse(success=False)
         
 
 def serve():
@@ -86,3 +137,4 @@ def serve():
 
 if __name__ == '__main__':
     serve()
+

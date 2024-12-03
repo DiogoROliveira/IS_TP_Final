@@ -10,6 +10,24 @@ class GetAllData(APIView):
             cursor.execute("SELECT * FROM data")
             result = cursor.fetchall()
 
-            data = [Book(id=row[0], name=row[2]) for row in result]
+            data = [
+                {
+                    "id": row[0],
+                    "ident": row[1],
+                    "type": row[2],
+                    "name": row[3],
+                    "latitude_deg": row[4],
+                    "longitude_deg": row[5],
+                    "elevation_ft": row[6],
+                    "continent": row[7],
+                    "iso_country": row[8],
+                    "iso_region": row[9],
+                    "municipality": row[10],
+                    "scheduled_service": row[11],
+                    "gps_code": row[12],
+                    "local_code": row[13],
+                }
+                for row in result
+            ]
 
             return Response({"data": data}, status=status.HTTP_200_OK)
