@@ -24,7 +24,7 @@ message CSVDataRequest {
 }
 
 message XMLFileResponse {
-    bytes xml_file = 1; 
+    bool success = 1; 
 }
 
 message JobStatusRequest {
