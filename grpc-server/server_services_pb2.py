@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x15server_services.proto\x12\x0fserver_services\"G\n\x11\x46ileUploadRequest\x12\x0c\n\x04\x66ile\x18\x01 \x01(\x0c\x12\x11\n\tfile_mime\x18\x02 \x01(\t\x12\x11\n\tfile_name\x18\x03 \x01(\t\"%\n\x12\x46ileUploadResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\"6\n\x0e\x43SVDataRequest\x12\x11\n\tfile_name\x18\x01 \x01(\t\x12\x11\n\tfile_mime\x18\x02 \x01(\t\"\"\n\x0fXMLFileResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\"\"\n\x10JobStatusRequest\x12\x0e\n\x06job_id\x18\x01 \x01(\t\"4\n\x11JobStatusResponse\x12\x0e\n\x06status\x18\x01 \x01(\t\x12\x0f\n\x07message\x18\x02 \x01(\t\"I\n\x13SendFileRequestBody\x12\x0c\n\x04\x66ile\x18\x01 \x01(\x0c\x12\x11\n\tfile_mime\x18\x02 \x01(\t\x12\x11\n\tfile_name\x18\x03 \x01(\t\"\'\n\x14SendFileResponseBody\x12\x0f\n\x07success\x18\x01 \x01(\x08\x32\xee\x02\n\x0fImporterService\x12T\n\tUploadCSV\x12\".server_services.FileUploadRequest\x1a#.server_services.FileUploadResponse\x12Q\n\x0c\x43onvertToXML\x12\x1f.server_services.CSVDataRequest\x1a .server_services.XMLFileResponse\x12^\n\x15\x43heckConversionStatus\x12!.server_services.JobStatusRequest\x1a\".server_services.JobStatusResponse\x12R\n\x0b\x44ownloadXML\x12!.server_services.JobStatusRequest\x1a .server_services.XMLFileResponse2j\n\x0fSendFileService\x12W\n\x08SendFile\x12$.server_services.SendFileRequestBody\x1a%.server_services.SendFileResponseBodyb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x15server_services.proto\x12\x0fserver_services\"G\n\x11\x46ileUploadRequest\x12\x0c\n\x04\x66ile\x18\x01 \x01(\x0c\x12\x11\n\tfile_mime\x18\x02 \x01(\t\x12\x11\n\tfile_name\x18\x03 \x01(\t\"%\n\x12\x46ileUploadResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\"6\n\x0e\x43SVDataRequest\x12\x11\n\tfile_name\x18\x01 \x01(\t\x12\x11\n\tfile_mime\x18\x02 \x01(\t\"\"\n\x0fXMLFileResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\"I\n\x13SendFileRequestBody\x12\x0c\n\x04\x66ile\x18\x01 \x01(\x0c\x12\x11\n\tfile_mime\x18\x02 \x01(\t\x12\x11\n\tfile_name\x18\x03 \x01(\t\"\'\n\x14SendFileResponseBody\x12\x0f\n\x07success\x18\x01 \x01(\x08\x32\xba\x01\n\x0fImporterService\x12T\n\tUploadCSV\x12\".server_services.FileUploadRequest\x1a#.server_services.FileUploadResponse\x12Q\n\x0c\x43onvertToXML\x12\x1f.server_services.CSVDataRequest\x1a .server_services.XMLFileResponse2j\n\x0fSendFileService\x12W\n\x08SendFile\x12$.server_services.SendFileRequestBody\x1a%.server_services.SendFileResponseBodyb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -39,16 +39,12 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_CSVDATAREQUEST']._serialized_end=208
   _globals['_XMLFILERESPONSE']._serialized_start=210
   _globals['_XMLFILERESPONSE']._serialized_end=244
-  _globals['_JOBSTATUSREQUEST']._serialized_start=246
-  _globals['_JOBSTATUSREQUEST']._serialized_end=280
-  _globals['_JOBSTATUSRESPONSE']._serialized_start=282
-  _globals['_JOBSTATUSRESPONSE']._serialized_end=334
-  _globals['_SENDFILEREQUESTBODY']._serialized_start=336
-  _globals['_SENDFILEREQUESTBODY']._serialized_end=409
-  _globals['_SENDFILERESPONSEBODY']._serialized_start=411
-  _globals['_SENDFILERESPONSEBODY']._serialized_end=450
-  _globals['_IMPORTERSERVICE']._serialized_start=453
-  _globals['_IMPORTERSERVICE']._serialized_end=819
-  _globals['_SENDFILESERVICE']._serialized_start=821
-  _globals['_SENDFILESERVICE']._serialized_end=927
+  _globals['_SENDFILEREQUESTBODY']._serialized_start=246
+  _globals['_SENDFILEREQUESTBODY']._serialized_end=319
+  _globals['_SENDFILERESPONSEBODY']._serialized_start=321
+  _globals['_SENDFILERESPONSEBODY']._serialized_end=360
+  _globals['_IMPORTERSERVICE']._serialized_start=363
+  _globals['_IMPORTERSERVICE']._serialized_end=549
+  _globals['_SENDFILESERVICE']._serialized_start=551
+  _globals['_SENDFILESERVICE']._serialized_end=657
 # @@protoc_insertion_point(module_scope)

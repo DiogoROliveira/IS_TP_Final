@@ -4,8 +4,6 @@ package server_services;
 service ImporterService {
     rpc UploadCSV (FileUploadRequest) returns (FileUploadResponse);
     rpc ConvertToXML (CSVDataRequest) returns (XMLFileResponse);
-    rpc CheckConversionStatus (JobStatusRequest) returns (JobStatusResponse);
-    rpc DownloadXML (JobStatusRequest) returns (XMLFileResponse);
 }
 
 message FileUploadRequest {
@@ -25,15 +23,6 @@ message CSVDataRequest {
 
 message XMLFileResponse {
     bool success = 1; 
-}
-
-message JobStatusRequest {
-    string job_id = 1; 
-}
-
-message JobStatusResponse {
-    string status = 1; 
-    string message = 2; 
 }
 
 // Service definition

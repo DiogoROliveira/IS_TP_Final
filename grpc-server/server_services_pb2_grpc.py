@@ -44,16 +44,6 @@ class ImporterServiceStub(object):
                 request_serializer=server__services__pb2.CSVDataRequest.SerializeToString,
                 response_deserializer=server__services__pb2.XMLFileResponse.FromString,
                 _registered_method=True)
-        self.CheckConversionStatus = channel.unary_unary(
-                '/server_services.ImporterService/CheckConversionStatus',
-                request_serializer=server__services__pb2.JobStatusRequest.SerializeToString,
-                response_deserializer=server__services__pb2.JobStatusResponse.FromString,
-                _registered_method=True)
-        self.DownloadXML = channel.unary_unary(
-                '/server_services.ImporterService/DownloadXML',
-                request_serializer=server__services__pb2.JobStatusRequest.SerializeToString,
-                response_deserializer=server__services__pb2.XMLFileResponse.FromString,
-                _registered_method=True)
 
 
 class ImporterServiceServicer(object):
@@ -71,18 +61,6 @@ class ImporterServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def CheckConversionStatus(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def DownloadXML(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
 
 def add_ImporterServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -94,16 +72,6 @@ def add_ImporterServiceServicer_to_server(servicer, server):
             'ConvertToXML': grpc.unary_unary_rpc_method_handler(
                     servicer.ConvertToXML,
                     request_deserializer=server__services__pb2.CSVDataRequest.FromString,
-                    response_serializer=server__services__pb2.XMLFileResponse.SerializeToString,
-            ),
-            'CheckConversionStatus': grpc.unary_unary_rpc_method_handler(
-                    servicer.CheckConversionStatus,
-                    request_deserializer=server__services__pb2.JobStatusRequest.FromString,
-                    response_serializer=server__services__pb2.JobStatusResponse.SerializeToString,
-            ),
-            'DownloadXML': grpc.unary_unary_rpc_method_handler(
-                    servicer.DownloadXML,
-                    request_deserializer=server__services__pb2.JobStatusRequest.FromString,
                     response_serializer=server__services__pb2.XMLFileResponse.SerializeToString,
             ),
     }
@@ -160,60 +128,6 @@ class ImporterService(object):
             target,
             '/server_services.ImporterService/ConvertToXML',
             server__services__pb2.CSVDataRequest.SerializeToString,
-            server__services__pb2.XMLFileResponse.FromString,
-            options,
-            channel_credentials,
-            insecure,
-            call_credentials,
-            compression,
-            wait_for_ready,
-            timeout,
-            metadata,
-            _registered_method=True)
-
-    @staticmethod
-    def CheckConversionStatus(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(
-            request,
-            target,
-            '/server_services.ImporterService/CheckConversionStatus',
-            server__services__pb2.JobStatusRequest.SerializeToString,
-            server__services__pb2.JobStatusResponse.FromString,
-            options,
-            channel_credentials,
-            insecure,
-            call_credentials,
-            compression,
-            wait_for_ready,
-            timeout,
-            metadata,
-            _registered_method=True)
-
-    @staticmethod
-    def DownloadXML(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(
-            request,
-            target,
-            '/server_services.ImporterService/DownloadXML',
-            server__services__pb2.JobStatusRequest.SerializeToString,
             server__services__pb2.XMLFileResponse.FromString,
             options,
             channel_credentials,
