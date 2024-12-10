@@ -9,8 +9,6 @@ import csv
 import logging
 import xml.etree.ElementTree as ET
 import xml.sax.saxutils as saxutils
-from xml.dom import minidom
-from lxml import etree
 import xmlschema
 
 
@@ -130,8 +128,11 @@ class SendFileService(server_services_pb2_grpc.SendFileServiceServicer):
             );
             """
 
+            cursor.execute(create_table_query)
+            conn.commit()
+
             # Read the CSV file
-            with open(file_path, 'r') as f:
+            with open(file_path, 'r', encoding='utf-8') as f:
                 reader = csv.DictReader(f)
                 next(reader)  # Skip the header row
                 for row in reader:
@@ -163,8 +164,6 @@ class SendFileService(server_services_pb2_grpc.SendFileServiceServicer):
                         row['ident']
                     ))
 
-            # Execute the SQL query to create the table
-            cursor.execute(create_table_query)
             # Commit the changes (optional in this case since it's a DDL query)
             conn.commit()
             return server_services_pb2.SendFileResponseBody(success=True)
@@ -294,13 +293,14 @@ class ImporterService(server_services_pb2_grpc.ImporterServiceServicer):
             fill_empty_fields(xml_output_path)
             
             # Validate XML (optional, you can add a schema path)
-            xsd_path = os.path.join(os.path.dirname(__file__), 'schemas', 'schema.xsd')
+            schemas_path = os.path.join(base_media_path, "schemas")
+            xsd_path = os.path.join(schemas_path, "schema.xsd")
+            
             if os.path.exists(xsd_path):
                 if not validate_xml(xml_output_path, xsd_path):
                     logger.warning(f"XML validation failed for {xml_output_path}")
-                            
-            logger.info(f"XML validation passed for {xml_output_path}")
-
+                else:
+                    logger.info(f"XML validation successful for {xml_output_path}")
             
             return server_services_pb2.XMLFileResponse(success=True)
         except Exception as e:
