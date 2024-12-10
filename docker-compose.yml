@@ -17,6 +17,10 @@ services:
       DBHOST: db
       DBPORT: 5432
       PYTHONBUFFERED: 1
+      RABBITMQ_HOST: rabbitmq
+      RABBITMQ_PORT: 5672
+      RABBITMQ_USER: guest
+      RABBITMQ_PW: guest
     
     depends_on:
       - db
@@ -51,6 +55,35 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
     
+  rabbitmq:
+    image: rabbitmq:3.9-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+
+  worker:
+    build: ./worker-rabbit-csv
+    ports:
+      - "8003:8003"
+    environment:
+      - RABBITMQ_HOST=rabbitmq
+      - RABBITMQ_PORT=5672
+      - RABBITMQ_USER=guest
+      - RABBITMQ_PW=guest
+      - DBNAME=mydatabase=value
+      - DBUSERNAME=postgres
+      - DBPASSWORD=postgres
+      - DBHOST=db
+      - DBPORT=5432
+    depends_on:
+      - rabbitmq
+      - db
+      - grpc-server
+
+
 volumes:
   grpc-server:
   pgdata:

@@ -39,20 +39,10 @@ class ImporterServiceStub(object):
                 request_serializer=server__services__pb2.FileUploadRequest.SerializeToString,
                 response_deserializer=server__services__pb2.FileUploadResponse.FromString,
                 _registered_method=True)
-        self.ConvertToXML = channel.unary_unary(
-                '/server_services.ImporterService/ConvertToXML',
-                request_serializer=server__services__pb2.CSVDataRequest.SerializeToString,
-                response_deserializer=server__services__pb2.XMLFileResponse.FromString,
-                _registered_method=True)
-        self.CheckConversionStatus = channel.unary_unary(
-                '/server_services.ImporterService/CheckConversionStatus',
-                request_serializer=server__services__pb2.JobStatusRequest.SerializeToString,
-                response_deserializer=server__services__pb2.JobStatusResponse.FromString,
-                _registered_method=True)
-        self.DownloadXML = channel.unary_unary(
-                '/server_services.ImporterService/DownloadXML',
-                request_serializer=server__services__pb2.JobStatusRequest.SerializeToString,
-                response_deserializer=server__services__pb2.XMLFileResponse.FromString,
+        self.UploadCSVChunks = channel.stream_unary(
+                '/server_services.ImporterService/UploadCSVChunks',
+                request_serializer=server__services__pb2.FileUploadChunksRequest.SerializeToString,
+                response_deserializer=server__services__pb2.FileUploadChunksResponse.FromString,
                 _registered_method=True)
 
 
@@ -65,19 +55,7 @@ class ImporterServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def ConvertToXML(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def CheckConversionStatus(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def DownloadXML(self, request, context):
+    def UploadCSVChunks(self, request_iterator, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -91,20 +69,10 @@ def add_ImporterServiceServicer_to_server(servicer, server):
                     request_deserializer=server__services__pb2.FileUploadRequest.FromString,
                     response_serializer=server__services__pb2.FileUploadResponse.SerializeToString,
             ),
-            'ConvertToXML': grpc.unary_unary_rpc_method_handler(
-                    servicer.ConvertToXML,
-                    request_deserializer=server__services__pb2.CSVDataRequest.FromString,
-                    response_serializer=server__services__pb2.XMLFileResponse.SerializeToString,
-            ),
-            'CheckConversionStatus': grpc.unary_unary_rpc_method_handler(
-                    servicer.CheckConversionStatus,
-                    request_deserializer=server__services__pb2.JobStatusRequest.FromString,
-                    response_serializer=server__services__pb2.JobStatusResponse.SerializeToString,
-            ),
-            'DownloadXML': grpc.unary_unary_rpc_method_handler(
-                    servicer.DownloadXML,
-                    request_deserializer=server__services__pb2.JobStatusRequest.FromString,
-                    response_serializer=server__services__pb2.XMLFileResponse.SerializeToString,
+            'UploadCSVChunks': grpc.stream_unary_rpc_method_handler(
+                    servicer.UploadCSVChunks,
+                    request_deserializer=server__services__pb2.FileUploadChunksRequest.FromString,
+                    response_serializer=server__services__pb2.FileUploadChunksResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -145,7 +113,7 @@ class ImporterService(object):
             _registered_method=True)
 
     @staticmethod
-    def ConvertToXML(request,
+    def UploadCSVChunks(request_iterator,
             target,
             options=(),
             channel_credentials=None,
@@ -155,141 +123,12 @@ class ImporterService(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(
-            request,
+        return grpc.experimental.stream_unary(
+            request_iterator,
             target,
-            '/server_services.ImporterService/ConvertToXML',
-            server__services__pb2.CSVDataRequest.SerializeToString,
-            server__services__pb2.XMLFileResponse.FromString,
-            options,
-            channel_credentials,
-            insecure,
-            call_credentials,
-            compression,
-            wait_for_ready,
-            timeout,
-            metadata,
-            _registered_method=True)
-
-    @staticmethod
-    def CheckConversionStatus(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(
-            request,
-            target,
-            '/server_services.ImporterService/CheckConversionStatus',
-            server__services__pb2.JobStatusRequest.SerializeToString,
-            server__services__pb2.JobStatusResponse.FromString,
-            options,
-            channel_credentials,
-            insecure,
-            call_credentials,
-            compression,
-            wait_for_ready,
-            timeout,
-            metadata,
-            _registered_method=True)
-
-    @staticmethod
-    def DownloadXML(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(
-            request,
-            target,
-            '/server_services.ImporterService/DownloadXML',
-            server__services__pb2.JobStatusRequest.SerializeToString,
-            server__services__pb2.XMLFileResponse.FromString,
-            options,
-            channel_credentials,
-            insecure,
-            call_credentials,
-            compression,
-            wait_for_ready,
-            timeout,
-            metadata,
-            _registered_method=True)
-
-
-class SendFileServiceStub(object):
-    """Service definition
-    """
-
-    def __init__(self, channel):
-        """Constructor.
-
-        Args:
-            channel: A grpc.Channel.
-        """
-        self.SendFile = channel.unary_unary(
-                '/server_services.SendFileService/SendFile',
-                request_serializer=server__services__pb2.SendFileRequestBody.SerializeToString,
-                response_deserializer=server__services__pb2.SendFileResponseBody.FromString,
-                _registered_method=True)
-
-
-class SendFileServiceServicer(object):
-    """Service definition
-    """
-
-    def SendFile(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-
-def add_SendFileServiceServicer_to_server(servicer, server):
-    rpc_method_handlers = {
-            'SendFile': grpc.unary_unary_rpc_method_handler(
-                    servicer.SendFile,
-                    request_deserializer=server__services__pb2.SendFileRequestBody.FromString,
-                    response_serializer=server__services__pb2.SendFileResponseBody.SerializeToString,
-            ),
-    }
-    generic_handler = grpc.method_handlers_generic_handler(
-            'server_services.SendFileService', rpc_method_handlers)
-    server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('server_services.SendFileService', rpc_method_handlers)
-
-
- # This class is part of an EXPERIMENTAL API.
-class SendFileService(object):
-    """Service definition
-    """
-
-    @staticmethod
-    def SendFile(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(
-            request,
-            target,
-            '/server_services.SendFileService/SendFile',
-            server__services__pb2.SendFileRequestBody.SerializeToString,
-            server__services__pb2.SendFileResponseBody.FromString,
+            '/server_services.ImporterService/UploadCSVChunks',
+            server__services__pb2.FileUploadChunksRequest.SerializeToString,
+            server__services__pb2.FileUploadChunksResponse.FromString,
             options,
             channel_credentials,
             insecure,
