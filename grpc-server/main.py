@@ -1,18 +1,15 @@
-from settings import GRPC_SERVER_PORT, MAX_WORKERS, MEDIA_PATH, DBNAME, DBUSERNAME, DBPASSWORD, DBHOST, DBPORT, RABBITMQ_HOST, RABBITMQ_PORT, RABBITMQ_USER, RABBITMQ_PW
-import pg8000
+from settings import GRPC_SERVER_PORT, MAX_WORKERS, MEDIA_PATH, RABBITMQ_HOST, RABBITMQ_PORT, RABBITMQ_USER, RABBITMQ_PW
 from concurrent import futures
 import os
 import server_services_pb2_grpc
 import server_services_pb2
 import grpc
-import csv
 import pika
 import logging
 import xml.etree.ElementTree as ET
-import xml.sax.saxutils as saxutils
 import xmlschema
 from lxml import etree
-from lxml.etree import Element, SubElement, tostring
+from lxml.etree import Element, SubElement
 import pandas as pd
 
 
@@ -21,7 +18,7 @@ LOG_FORMAT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 logging.basicConfig(level=logging.INFO, format=LOG_FORMAT)
 logger = logging.getLogger("FileService")
 
-# =============== Functions =================
+# ====================== Functions ======================
 
 def csv_to_xml(csv_file, xml_file, objname):
     try:
@@ -61,7 +58,7 @@ def validate_xml(xml_file, xsd_file):
         return False
 
 
-# ================== gRPC Services ==================
+# ======================= gRPC Services =======================
 
 class ImporterService(server_services_pb2_grpc.ImporterServiceServicer):
     def __init__(self, *args, **kwargs):
@@ -77,8 +74,7 @@ class ImporterService(server_services_pb2_grpc.ImporterServiceServicer):
             with open(file_path, 'wb') as f:
                 f.write(ficheiro_em_bytes)
             
-            logger.info(f"{DBHOST}:{DBPORT}", exc_info=True)
-        
+            logger.info(f"File {request.file_name} uploaded successfully")
             return server_services_pb2.FileUploadResponse(success=True)
         except Exception as e:
             logger.error(f"Error: {str(e)}", exc_info=True)
@@ -88,6 +84,7 @@ class ImporterService(server_services_pb2_grpc.ImporterServiceServicer):
 
     def UploadCSVChunks(self, request_iterator, context):
         try:
+            # rabbitmq connection
             rabbit_connection = pika.BlockingConnection(
                 pika.ConnectionParameters(
                     host=RABBITMQ_HOST, 
@@ -99,19 +96,22 @@ class ImporterService(server_services_pb2_grpc.ImporterServiceServicer):
             rabbit_channel = rabbit_connection.channel()
             rabbit_channel.queue_declare(queue='csv_chunks')
             
+
             file_name = None
             file_chunks = []
             
+            # reads the chunks
             for chunk in request_iterator:
                 if not file_name:
                     file_name = chunk.file_name
 
+                # appends recieved chunk to the list
                 file_chunks.append(chunk.data)
 
-                # Sends the chunk to the queue
+                # sends the chunk to the queue
                 rabbit_channel.basic_publish(exchange='', routing_key='csv_chunks', body=chunk.data)
             
-            # Marks the end of the file
+            # marks the end of the file
             rabbit_channel.basic_publish(exchange='', routing_key='csv_chunks', body="__EOF__")
 
             file_content = b"".join(file_chunks)
@@ -121,6 +121,8 @@ class ImporterService(server_services_pb2_grpc.ImporterServiceServicer):
             with open(file_path, 'wb') as f:
                 f.write(file_content)
 
+            # XML conversion and validation
+            # ===================================================
             xml_path = os.path.join(MEDIA_PATH, "./xml/")
             csv_to_xml(file_path, os.path.join(xml_path, file_name.split(".")[0] + ".xml"), "Temp")
             xml_file = os.path.join(xml_path, file_name.split(".")[0] + ".xml")
@@ -131,7 +133,8 @@ class ImporterService(server_services_pb2_grpc.ImporterServiceServicer):
                 logger.error(f"XML Validation Error: {str(e)}")
             else:
                 logger.info(f"XML Validation Success: {xml_file}")
-            
+            # ===================================================
+
             return server_services_pb2.FileUploadChunksResponse(
                 success=True,
                 message=f'File {file_name} was imported.'
@@ -140,7 +143,45 @@ class ImporterService(server_services_pb2_grpc.ImporterServiceServicer):
             logger.error(f"Error: {str(e)}", exc_info=True)
             return server_services_pb2.FileUploadChunksResponse(success=False, message=str(e))
 
-# ============= main ==============
+
+class GroupByService(server_services_pb2_grpc.GroupByServiceServicer):
+    def __init__(self, *args, **kwargs):
+        pass
+
+    def FilterXML(self, request, context):
+        try:
+            # validate request body
+            if not request.file_name or not request.xpath_query:
+                logger.error("Missing body parameters: file_name and/or xpath_query")
+                raise ValueError("Missing body parameters: file_name and/or xpath_query")
+
+            xml_path = os.path.join(MEDIA_PATH, "./xml/")
+            xml_file = os.path.join(xml_path, request.file_name)
+
+            # validate file exists
+            if not os.path.exists(xml_file):
+                logger.error(f"File not found: {xml_file}")
+                raise FileNotFoundError(f"File not found: {xml_file}")
+
+            # xpath query
+            tree = etree.parse(xml_file)
+            root = tree.getroot()
+            results = root.xpath(request.xpath_query)
+            
+            # convert results toString
+            str_results = [
+                etree.tostring(result, encoding='unicode', method='xml').strip() 
+                for result in results
+            ]
+            
+            logger.info(f"XPath query executed successfully: {len(results)} results")
+            return server_services_pb2.FilterResponse(query_result=' '.join(str_results))
+        
+        except Exception as e:
+            logger.error(f"Error: {str(e)}", exc_info=True)
+            return server_services_pb2.FilterResponse(query_result=str(e))
+
+# ================== main ==================
 
 def serve():
 
@@ -149,6 +190,7 @@ def serve():
     # Consult the file "server_services_pb2_grpc" to see the name of the function generated
     #to add the service to the server
     server_services_pb2_grpc.add_ImporterServiceServicer_to_server(ImporterService(), server)
+    server_services_pb2_grpc.add_GroupByServiceServicer_to_server(GroupByService(), server)
 
     server.add_insecure_port(f'[::]:{GRPC_SERVER_PORT}')
     server.start()

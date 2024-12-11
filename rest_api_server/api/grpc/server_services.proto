@@ -26,3 +26,15 @@ message FileUploadChunksResponse {
     string message = 2;
 }
 
+service GroupByService {
+    rpc FilterXML (FilterRequest) returns (FilterResponse);
+}
+
+message FilterRequest {
+    string file_name = 1;
+    string xpath_query = 2;
+}
+
+message FilterResponse {
+    string query_result = 1;
+}

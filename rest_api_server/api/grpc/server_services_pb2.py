@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x15server_services.proto\x12\x0fserver_services\"G\n\x11\x46ileUploadRequest\x12\x0c\n\x04\x66ile\x18\x01 \x01(\x0c\x12\x11\n\tfile_mime\x18\x02 \x01(\t\x12\x11\n\tfile_name\x18\x03 \x01(\t\"%\n\x12\x46ileUploadResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\":\n\x17\x46ileUploadChunksRequest\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\x0c\x12\x11\n\tfile_name\x18\x02 \x01(\t\"<\n\x18\x46ileUploadChunksResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t2\xd1\x01\n\x0fImporterService\x12T\n\tUploadCSV\x12\".server_services.FileUploadRequest\x1a#.server_services.FileUploadResponse\x12h\n\x0fUploadCSVChunks\x12(.server_services.FileUploadChunksRequest\x1a).server_services.FileUploadChunksResponse(\x01\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x15server_services.proto\x12\x0fserver_services\"G\n\x11\x46ileUploadRequest\x12\x0c\n\x04\x66ile\x18\x01 \x01(\x0c\x12\x11\n\tfile_mime\x18\x02 \x01(\t\x12\x11\n\tfile_name\x18\x03 \x01(\t\"%\n\x12\x46ileUploadResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\":\n\x17\x46ileUploadChunksRequest\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\x0c\x12\x11\n\tfile_name\x18\x02 \x01(\t\"<\n\x18\x46ileUploadChunksResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\"7\n\rFilterRequest\x12\x11\n\tfile_name\x18\x01 \x01(\t\x12\x13\n\x0bxpath_query\x18\x02 \x01(\t\"&\n\x0e\x46ilterResponse\x12\x14\n\x0cquery_result\x18\x01 \x01(\t2\xd1\x01\n\x0fImporterService\x12T\n\tUploadCSV\x12\".server_services.FileUploadRequest\x1a#.server_services.FileUploadResponse\x12h\n\x0fUploadCSVChunks\x12(.server_services.FileUploadChunksRequest\x1a).server_services.FileUploadChunksResponse(\x01\x32^\n\x0eGroupByService\x12L\n\tFilterXML\x12\x1e.server_services.FilterRequest\x1a\x1f.server_services.FilterResponseb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -39,6 +39,12 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_FILEUPLOADCHUNKSREQUEST']._serialized_end=212
   _globals['_FILEUPLOADCHUNKSRESPONSE']._serialized_start=214
   _globals['_FILEUPLOADCHUNKSRESPONSE']._serialized_end=274
-  _globals['_IMPORTERSERVICE']._serialized_start=277
-  _globals['_IMPORTERSERVICE']._serialized_end=486
+  _globals['_FILTERREQUEST']._serialized_start=276
+  _globals['_FILTERREQUEST']._serialized_end=331
+  _globals['_FILTERRESPONSE']._serialized_start=333
+  _globals['_FILTERRESPONSE']._serialized_end=371
+  _globals['_IMPORTERSERVICE']._serialized_start=374
+  _globals['_IMPORTERSERVICE']._serialized_end=583
+  _globals['_GROUPBYSERVICE']._serialized_start=585
+  _globals['_GROUPBYSERVICE']._serialized_end=679
 # @@protoc_insertion_point(module_scope)

@@ -32,6 +32,7 @@ reassembled_data = []
 
 Base = declarative_base()
 
+# DB table model
 class TemperatureData(Base):
     __tablename__ = 'data'
     
@@ -45,11 +46,13 @@ class TemperatureData(Base):
     Year = Column(Integer, nullable=False)
     AvgTemperature = Column(Float, nullable=False)
 
+    # unique constraint (if the combination of columns are unique)
     __table_args__ = (
         UniqueConstraint('Region', 'Country', 'State', 'City', 'Month', 'Day', 'Year', 
                          name='uq_temperature_data'),
     )
 
+# DB connection
 def get_db_connection_string(
     host=DBHOST, 
     database=DBNAME, 
@@ -59,6 +62,7 @@ def get_db_connection_string(
 ):
     return f"postgresql+pg8000://{user}:{password}@{host}:{port}/{database}"
 
+# DB session
 @contextmanager
 def db_session_scope(engine):
     Session = sessionmaker(bind=engine)
@@ -73,7 +77,8 @@ def db_session_scope(engine):
     finally:
         session.close()
 
-def insert_to_db_efficient(df, batch_size=1000):
+
+def insert_to_db(df, batch_size=1000):
     try:
         connection_string = get_db_connection_string()
         engine = create_engine(
@@ -122,7 +127,7 @@ def process_message(ch, method, properties, body):
             
             for df_chunk in pd.read_csv(csvfile, chunksize=10000):  
                 logger.info(f"Processing chunk of size: {df_chunk.shape}")
-                insert_to_db_efficient(df_chunk)
+                insert_to_db(df_chunk)
 
         except Exception as e:
             logger.error(f"Error processing final message: {e}")

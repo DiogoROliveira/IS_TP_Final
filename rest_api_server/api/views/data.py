@@ -13,19 +13,14 @@ class GetAllData(APIView):
             data = [
                 {
                     "id": row[0],
-                    "ident": row[1],
-                    "type": row[2],
-                    "name": row[3],
-                    "latitude_deg": row[4],
-                    "longitude_deg": row[5],
-                    "elevation_ft": row[6],
-                    "continent": row[7],
-                    "iso_country": row[8],
-                    "iso_region": row[9],
-                    "municipality": row[10],
-                    "scheduled_service": row[11],
-                    "gps_code": row[12],
-                    "local_code": row[13],
+                    "Region": row[1],
+                    "Country": row[2],
+                    "State": row[3],
+                    "City": row[4],
+                    "Month": row[5],
+                    "Day": row[6],
+                    "Year": row[7],
+                    "AvgTemperature": row[8],
                 }
                 for row in result
             ]
