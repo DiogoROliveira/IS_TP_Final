@@ -1,13 +1,17 @@
 import pika
-import json
 import os
 import logging
 from io import StringIO
 import pandas as pd
 import pg8000
+from sqlalchemy import create_engine, Column, Integer, String, Float, UniqueConstraint
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.dialects.postgresql import insert
+from sqlalchemy.orm import sessionmaker
+from contextlib import contextmanager
 
 RABBITMQ_HOST = os.getenv("RABBITMQ_HOST", "localhost")
-RABBITMQ_PORT = os.getenv("RABBITMQ_PORT", "5672")
+RABBITMQ_PORT = int(os.getenv("RABBITMQ_PORT", "5672"))
 RABBITMQ_USER = os.getenv("RABBITMQ_USER", "guest")
 RABBITMQ_PW = os.getenv("RABBITMQ_PW", "guest")
 
@@ -17,7 +21,7 @@ DBHOST = os.getenv('DBHOST', 'localhost')
 DBUSERNAME = os.getenv('DBUSERNAME', 'postgres')
 DBPASSWORD = os.getenv('DBPASSWORD', 'postgres')
 DBNAME = os.getenv('DBNAME', 'mydatabase')
-DBPORT = os.getenv('DBPORT', '5432')
+DBPORT = int(os.getenv('DBPORT', '5432'))
 
 # Configure logging
 LOG_FORMAT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
@@ -26,96 +30,125 @@ logger = logging.getLogger()
 
 reassembled_data = []
 
-def process_message(ch, method, properties, body):
+Base = declarative_base()
 
-    # body is a CSV chunk.
-    str_stream = body.decode('utf-8')
+class TemperatureData(Base):
+    __tablename__ = 'data'
     
-    if str_stream == "__EOF__":
-        
-        print("EOF marker received. Finalizing...")
-        file_content = b"".join(reassembled_data)
-        csv_text = file_content.decode('utf-8')
-    
-        if len(reassembled_data) > 1:
-        
-            csvfile = StringIO(csv_text)
-            df = pd.read_csv(csvfile)
-            print(df)
-            #call a function to save the df data to a database
-            
-            conn = pg8000.connect(
-            host=DBHOST,
-            database=DBNAME,
-            user=DBUSERNAME,
-            password=DBPASSWORD,
-            port=int(DBPORT)
-            )
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    Region = Column(String(255), nullable=False)
+    Country = Column(String(255), nullable=False)
+    State = Column(String(255), nullable=True)
+    City = Column(String(255), nullable=False)
+    Month = Column(Integer, nullable=False)
+    Day = Column(Integer, nullable=False)
+    Year = Column(Integer, nullable=False)
+    AvgTemperature = Column(Float, nullable=False)
 
-            cursor = conn.cursor()
+    __table_args__ = (
+        UniqueConstraint('Region', 'Country', 'State', 'City', 'Month', 'Day', 'Year', 
+                         name='uq_temperature_data'),
+    )
 
-            create_table_query = """
-                CREATE TABLE IF NOT EXISTS data (
-                    id SERIAL PRIMARY KEY,
-                    Region VARCHAR(255) NOT NULL,
-                    Country VARCHAR(255) NOT NULL,
-                    State VARCHAR(255),
-                    City VARCHAR(255) NOT NULL,
-                    Month INT NOT NULL,
-                    Day INT NOT NULL,
-                    Year INT NOT NULL,
-                    AvgTemperature FLOAT NOT NULL
-                );
-            """
+def get_db_connection_string(
+    host=DBHOST, 
+    database=DBNAME, 
+    user=DBUSERNAME, 
+    password=DBPASSWORD, 
+    port=DBPORT
+):
+    return f"postgresql+pg8000://{user}:{password}@{host}:{port}/{database}"
 
-            cursor.execute(create_table_query)
+@contextmanager
+def db_session_scope(engine):
+    Session = sessionmaker(bind=engine)
+    session = Session()
+    try:
+        yield session
+        session.commit()
+    except Exception as e:
+        session.rollback()
+        logger.error(f"Error on database transaction: {e}")
+        raise
+    finally:
+        session.close()
 
+def insert_to_db_efficient(df, batch_size=1000):
+    try:
+        connection_string = get_db_connection_string()
+        engine = create_engine(
+            connection_string, 
+            pool_size=10, 
+            max_overflow=20,  
+            pool_timeout=30,  
+            pool_recycle=1800  
+        )
 
-             # Processar cada linha do DataFrame e inserir os dados
-            for _, row in df.iterrows():
-                # Verifica duplicatas no banco
-                cursor.execute(
-                    "SELECT 1 FROM data WHERE Region=%s AND Country=%s AND State=%s AND City=%s AND Month=%s AND Day=%s AND Year=%s AND AvgTemperature=%s",
-                    (row["Region"], row["Country"], row["State"], row["City"], row["Month"], row["Day"], row["Year"], row["AvgTemperature"])
+        Base.metadata.create_all(engine)
+
+        data_to_insert = df.to_dict('records')
+
+        with db_session_scope(engine) as session:
+            for i in range(0, len(data_to_insert), batch_size):
+                batch = data_to_insert[i:i+batch_size]
+                
+                stmt = insert(TemperatureData).values(batch)
+                stmt = stmt.on_conflict_do_nothing(
+                    index_elements=[
+                        'Region', 'Country', 'State', 'City',
+                        'Month', 'Day', 'Year'
+                    ]
                 )
-                if not cursor.fetchone():
-                    # Inserir a linha se não for duplicada
-                    cursor.execute(
-                        "INSERT INTO data (Region, Country, State, City, Month, Day, Year, AvgTemperature) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)",
-                        (row["Region"], row["Country"], row["State"], row["City"], row["Month"], row["Day"], row["Year"], row["AvgTemperature"])
-                    )
+                session.execute(stmt)
 
-            # Commit das mudanças
-            conn.commit()
-            cursor.close()
-            conn.close()
+        logger.info(f"Data inserted successfully: {len(data_to_insert)} records")
+        return len(data_to_insert)
 
+    except Exception as e:
+        logger.error(f"Error inserting data: {e}")
+        raise
+
+
+def process_message(ch, method, properties, body):
+    str_stream = body.decode('utf-8')
+
+    if str_stream == "__EOF__":
+
+        logger.info("EOF marker received. Finalizing...")
+        
+        try:
+            file_content = b"".join(reassembled_data)
+            csvfile = StringIO(file_content.decode('utf-8'))
+            
+            for df_chunk in pd.read_csv(csvfile, chunksize=10000):  
+                logger.info(f"Processing chunk of size: {df_chunk.shape}")
+                insert_to_db_efficient(df_chunk)
+
+        except Exception as e:
+            logger.error(f"Error processing final message: {e}")
+        finally:
             reassembled_data.clear()
     else:
-        print(body)
         reassembled_data.append(body)
 
 
 def main():
-    
     credentials = pika.PlainCredentials(RABBITMQ_USER, RABBITMQ_PW)
-    
-    connection = pika.BlockingConnection(
-        pika.ConnectionParameters(
-            host=RABBITMQ_HOST, 
-            port=RABBITMQ_PORT, 
-            credentials=credentials
+    connection = pika.BlockingConnection(pika.ConnectionParameters(
+        host=RABBITMQ_HOST,
+        port=RABBITMQ_PORT, 
+        credentials=credentials,
+        heartbeat=120
         )
     )
-    
+
     channel = connection.channel()
     channel.queue_declare(queue=QUEUE_NAME)
     channel.basic_consume(queue=QUEUE_NAME,
-    
+                          
     on_message_callback=process_message, auto_ack=True)
     logger.info(f"Waiting for messages...", exc_info=True)
     channel.start_consuming()
-
 
 if __name__ == "__main__":
     main()

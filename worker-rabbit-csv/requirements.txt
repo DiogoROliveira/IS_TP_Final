@@ -1,3 +1,4 @@
 pika
 pandas
 pg8000
+sqlalchemy

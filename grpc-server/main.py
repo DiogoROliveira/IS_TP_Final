@@ -9,9 +9,11 @@ import csv
 import pika
 import logging
 import xml.etree.ElementTree as ET
-from lxml import etree
 import xml.sax.saxutils as saxutils
 import xmlschema
+from lxml import etree
+from lxml.etree import Element, SubElement, tostring
+import pandas as pd
 
 
 # Configure logging
@@ -21,50 +23,23 @@ logger = logging.getLogger("FileService")
 
 # =============== Functions =================
 
-def csv_to_xml(csv_file, xml_file, objname, chunk_size=10000):
-    
-    if not os.path.exists(csv_file):
+def csv_to_xml(csv_file, xml_file, objname):
+    try:
+        df = pd.read_csv(csv_file)
+    except FileNotFoundError:
         raise FileNotFoundError(f"Arquivo {csv_file} não encontrado.")
 
-    
-    with open(xml_file, mode='w', encoding='utf-8') as xmlfile:
-        # initial root tag
-        xmlfile.write('<?xml version="1.0" encoding="UTF-8"?>\n<root>\n')
+    root = Element('root')
+ 
+    for _, row in df.iterrows():
+        obj_element = SubElement(root, objname)
+        for col_name, value in row.items():
+            col_element = SubElement(obj_element, col_name)
+            col_element.text = str(value) if pd.notna(value) else ''
 
-        with open(csv_file, mode='r', newline='', encoding='utf-8') as csvfile:
-            reader = csv.DictReader(csvfile, delimiter=',')
-            headers = reader.fieldnames
+    tree = etree.ElementTree(root)
+    tree.write(xml_file, pretty_print=True, xml_declaration=True, encoding='UTF-8')
 
-            chunk = []
-            for line in reader:
-                chunk.append(line)
-
-                # saves chunk if it's full
-                if len(chunk) >= chunk_size:
-                    
-                    for item in chunk:
-                        xmlfile.write('  <' + objname + '>\n')
-                        for field in headers:
-                            # process special chars
-                            value = str(item[field]) if item[field] is not None else ''
-                            escaped_value = saxutils.escape(value)
-                            xmlfile.write(f'    <{field}>{escaped_value}</{field}>\n')
-                        xmlfile.write('  </' + objname + '>\n')
-                    
-                    # reset chunk
-                    chunk = []
-
-            # leftover chunk (less than 10k lines)
-            if chunk:
-                for item in chunk:
-                    xmlfile.write('  <' + objname + '>\n')
-                    for field in headers:
-                        value = str(item[field]) if item[field] is not None else ''
-                        escaped_value = saxutils.escape(value)
-                        xmlfile.write(f'    <{field}>{escaped_value}</{field}>\n')
-                    xmlfile.write('  </' + objname + '>\n')
-
-        xmlfile.write('</root>')
 
 def fill_empty_fields(xml_file):
     tree = ET.parse(xml_file)
@@ -112,61 +87,55 @@ class ImporterService(server_services_pb2_grpc.ImporterServiceServicer):
             return server_services_pb2.FileUploadResponse(success=False)   
 
     def UploadCSVChunks(self, request_iterator, context):
-         
         try:
             rabbit_connection = pika.BlockingConnection(
                 pika.ConnectionParameters(
                     host=RABBITMQ_HOST, 
                     port=RABBITMQ_PORT, 
-                    credentials=pika.PlainCredentials(RABBITMQ_USER, RABBITMQ_PW)
+                    credentials=pika.PlainCredentials(RABBITMQ_USER, RABBITMQ_PW),
+                    heartbeat=120
                 )
             )
-
             rabbit_channel = rabbit_connection.channel()
             rabbit_channel.queue_declare(queue='csv_chunks')
             
-            csv_path = os.path.join(MEDIA_PATH, "./csv/")
-            xml_path = os.path.join(MEDIA_PATH, "./xml/")
-            os.makedirs(csv_path, exist_ok=True)
-
             file_name = None
-            file_chunks = [] # Store all chunks in memory
+            file_chunks = []
             
             for chunk in request_iterator:
                 if not file_name:
                     file_name = chunk.file_name
-                    
-                # Collect the file data chunks
+
                 file_chunks.append(chunk.data)
 
-                # Send data chunk to the worker
+                # Sends the chunk to the queue
                 rabbit_channel.basic_publish(exchange='', routing_key='csv_chunks', body=chunk.data)
-
-            # Send info that the file stream ended
+            
+            # Marks the end of the file
             rabbit_channel.basic_publish(exchange='', routing_key='csv_chunks', body="__EOF__")
 
-            # Combine all chunks into a single bytes object
             file_content = b"".join(file_chunks)
-            
-            file_path = os.path.join(csv_path, file_name)
 
-            with open(file_path, "wb") as f:
+            file_path = os.path.join(MEDIA_PATH, "./csv/", file_name)
+
+            with open(file_path, 'wb') as f:
                 f.write(file_content)
 
-            try:
-                xml_file = os.path.join(xml_path, f"{os.path.splitext(file_name)[0]}.xml")
-                csv_to_xml(file_path, xml_file, "Temp")
-                fill_empty_fields(xml_file)
+            xml_path = os.path.join(MEDIA_PATH, "./xml/")
+            csv_to_xml(file_path, os.path.join(xml_path, file_name.split(".")[0] + ".xml"), "Temp")
+            xml_file = os.path.join(xml_path, file_name.split(".")[0] + ".xml")
 
-                if not validate_xml(xml_file, "schemas/schema.xsd"):
-                    logger.warning(f"XML validation failed for {xml_file}")
-                else:
-                    logger.info(f"XML validation successful for {xml_file}")
-            except Exception as e:
-                logger.error(f"Error: {str(e)}", exc_info=True)
-                return server_services_pb2.FileUploadChunksResponse(success=False, message=str(e))
+            fill_empty_fields(xml_file)
+
+            if not validate_xml(xml_file, os.path.join(MEDIA_PATH, "./schemas/", "schema.xsd")):
+                logger.error(f"XML Validation Error: {str(e)}")
+            else:
+                logger.info(f"XML Validation Success: {xml_file}")
             
-            return server_services_pb2.FileUploadChunksResponse(success=True, message='File Imported')
+            return server_services_pb2.FileUploadChunksResponse(
+                success=True,
+                message=f'File {file_name} was imported.'
+            )
         except Exception as e:
             logger.error(f"Error: {str(e)}", exc_info=True)
             return server_services_pb2.FileUploadChunksResponse(success=False, message=str(e))
