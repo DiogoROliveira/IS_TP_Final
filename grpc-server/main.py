@@ -5,7 +5,9 @@ import server_services_pb2_grpc
 import server_services_pb2
 import grpc
 import pika
+import time
 import logging
+import requests
 import xml.etree.ElementTree as ET
 import xmlschema
 from lxml import etree
@@ -26,6 +28,15 @@ def csv_to_xml(csv_file, xml_file, objname):
     except FileNotFoundError:
         raise FileNotFoundError(f"Arquivo {csv_file} não encontrado.")
 
+    df['latitude'] = None
+    df['longitude'] = None
+
+    for idx, row in df.iterrows():
+        if 'City' in row: 
+            lat, lon = get_lat_lon_from_city(row['City'])
+            df.at[idx, 'latitude'] = lat
+            df.at[idx, 'longitude'] = lon
+
     root = Element('root')
  
     for _, row in df.iterrows():
@@ -36,7 +47,6 @@ def csv_to_xml(csv_file, xml_file, objname):
 
     tree = etree.ElementTree(root)
     tree.write(xml_file, pretty_print=True, xml_declaration=True, encoding='UTF-8')
-
 
 def fill_empty_fields(xml_file):
     tree = ET.parse(xml_file)
@@ -56,6 +66,41 @@ def validate_xml(xml_file, xsd_file):
     except Exception as e:
         logger.error(f"XML Validation Error: {str(e)}")
         return False
+
+cache = {}
+
+def get_lat_lon_from_city(city):
+    try:
+        if city in cache:
+            logger.info(f"Cache hit for city: {city}")
+            return cache[city]['lat'], cache[city]['lon']
+        
+        logger.info(f"Cache miss for city: {city}. Fetching data...")
+        url = 'https://nominatim.openstreetmap.org/search'
+        params = {
+            "q": city,
+            "format": 'json',
+            "limit": 1,
+        }
+        headers = {
+            "User-Agent": "GRPC-APP/1.0 (diogo.rosas.oliveira@ipvc.pt)"
+        }
+
+        time.sleep(1)
+        response = requests.get(url, params=params, headers=headers)
+        response.raise_for_status()
+        data = response.json()
+
+        if data:
+            lat, lon = data[0]['lat'], data[0]['lon']
+            logger.info(f"Latitude: {lat}, Longitude: {lon}")
+            cache[city] = {'lat': lat, 'lon': lon}
+            return lat, lon
+        else:
+            return None, None
+    except Exception as e:
+        logger.error(f"Error fetching latitude and longitude: {str(e)}")
+        return None, None
 
 
 # ======================= gRPC Services =======================
@@ -130,7 +175,7 @@ class ImporterService(server_services_pb2_grpc.ImporterServiceServicer):
             fill_empty_fields(xml_file)
 
             if not validate_xml(xml_file, os.path.join(MEDIA_PATH, "./schemas/", "schema.xsd")):
-                logger.error(f"XML Validation Error: {str(e)}")
+                logger.error(f"XML Validation Error")
             else:
                 logger.info(f"XML Validation Success: {xml_file}")
             # ===================================================

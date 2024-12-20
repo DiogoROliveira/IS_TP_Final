@@ -7,3 +7,4 @@ saxonche
 pg8000
 celery
 pika
+requests

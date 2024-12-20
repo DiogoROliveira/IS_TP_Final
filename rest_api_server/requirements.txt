@@ -4,3 +4,4 @@ django-cors-headers
 django_pg8000
 grpcio
 grpcio-tools
+graphene-django

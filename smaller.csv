@@ -1,0 +1,1001 @@
+Region,Country,State,City,Month,Day,Year,AvgTemperature
+North America,US,New York,Albany,5,6,2016,55.3
+North America,US,New York,Albany,10,27,2013,46.9
+North America,US,Rhode Island,Rhode Island,2,5,2011,26.6
+North America,US,Minnesota,Duluth,4,26,2020,44.1
+North America,US,Kentucky,Lexington,8,7,2010,74.0
+North America,US,New York,Albany,4,24,2017,56.6
+North America,US,California,Fresno,11,24,2013,53.8
+South/Central America & Carribean,Nicaragua,,Managua,4,4,2015,85.8
+Middle East,Oman,,Muscat,12,19,2016,75.6
+North America,US,South Dakota,Sioux Falls,1,21,2018,34.5
+North America,US,Ohio,Akron Canton,10,24,2012,66.6
+North America,US,Kentucky,Louisville,11,30,2013,39.4
+North America,US,Alabama,Huntsville,8,24,2015,79.6
+Middle East,Turkey,,Istanbul,12,6,2015,47.3
+Asia,Hong Kong,,Hong Kong,7,16,2011,82.6
+North America,Canada,,Toronto,6,25,2010,67.8
+South/Central America & Carribean,Nicaragua,,Managua,12,1,2018,80.6
+North America,US,Minnesota,Duluth,5,2,2015,61.1
+Asia,Indonesia,,Jakarta,12,16,2013,82.4
+Europe,Norway,,Oslo,3,6,2018,21.3
+North America,US,Missouri,Kansas City,2,6,2014,1.6
+Asia,China,,Beijing,6,24,2010,79.4
+Australia/South Pacific,Australia,,Perth,7,31,2017,48.2
+South/Central America & Carribean,Brazil,,Sao Paulo,12,12,2012,77.0
+North America,US,Virginia,Roanoke,4,22,2014,65.6
+South/Central America & Carribean,Honduras,,Tegucigalpa,10,3,2010,69.7
+North America,US,Colorado,Colorado Springs,8,8,2017,60.0
+Asia,China,,Guangzhou,1,27,2011,57.9
+North America,US,Tennessee,Nashville,3,17,2010,48.7
+South/Central America & Carribean,Brazil,,Rio de Janeiro,1,30,2018,76.0
+North America,US,Michigan,Sault Ste Marie,9,12,2019,57.3
+North America,US,Virginia,Roanoke,10,10,2014,59.5
+North America,US,Ohio,Columbus,6,5,2011,75.2
+Middle East,Turkey,,Istanbul,2,16,2013,40.3
+North America,Canada,,Ottawa,8,24,2012,71.0
+North America,US,Kentucky,Lexington,6,24,2016,75.0
+North America,US,North Dakota,Fargo,10,21,2010,40.6
+North America,US,Texas,Lubbock,12,13,2019,47.9
+Europe,Russia,,Moscow,12,4,2010,23.0
+North America,US,Kansas,Wichita,5,21,2019,59.6
+North America,US,South Carolina,Columbia,4,21,2019,54.1
+Europe,France,,Paris,10,1,2012,55.6
+South/Central America & Carribean,Uruguay,,Montvideo,12,1,2018,62.8
+North America,US,Tennessee,Memphis,11,29,2011,36.5
+Africa,Congo,,Brazzaville,1,28,2017,80.2
+North America,US,Mississippi,Tupelo,12,20,2014,41.9
+North America,US,Alabama,Birmingham,8,6,2016,84.1
+North America,US,North Carolina,Charlotte,11,2,2012,51.2
+North America,US,Georgia,Macon,1,21,2012,61.6
+Africa,Namibia,,Windhoek,11,25,2015,82.4
+South/Central America & Carribean,Brazil,,Sao Paulo,2,20,2018,75.3
+Asia,Taiwan,,Taipei,11,1,2014,78.5
+Europe,Belarus,,Minsk,8,5,2019,56.4
+Europe,Iceland,,Reykjavik,6,27,2019,54.0
+Europe,The Netherlands,,Amsterdam,4,9,2012,48.0
+North America,Canada,,Regina,11,20,2011,-0.6
+North America,US,Nebraska,North Platte,9,10,2019,66.6
+North America,US,Ohio,Toledo,7,9,2018,75.1
+North America,US,Minnesota,Minneapolis St. Paul,7,27,2013,58.3
+Europe,Spain,,Barcelona,11,11,2011,61.6
+Europe,Spain,,Madrid,2,15,2019,43.4
+North America,US,Florida,Tampa St. Petersburg,1,28,2015,55.7
+North America,US,Texas,El Paso,4,2,2015,74.8
+North America,US,Connecticut,Hartford Springfield,5,29,2014,54.2
+North America,US,Pennsylvania,Wilkes Barre,1,18,2017,37.6
+Africa,Kenya,,Nairobi,12,16,2014,66.1
+North America,US,Montana,Billings,8,30,2010,57.8
+North America,US,Virginia,Roanoke,9,6,2016,69.8
+Middle East,Saudi Arabia,,Riyadh,9,8,2014,95.5
+North America,US,Arkansas,Little Rock,5,31,2015,71.7
+South/Central America & Carribean,Panama,,Panama City,5,10,2018,78.4
+North America,US,Illinois,Peoria,11,20,2018,31.7
+Asia,China,,Beijing,10,2,2019,70.8
+Middle East,Kuwait,,Kuwait,1,28,2016,45.6
+North America,US,Vermont,Burlington,6,11,2011,61.2
+North America,US,South Carolina,Columbia,6,8,2019,73.3
+Asia,Myanmar (Burma),,Rangoon,3,15,2011,74.1
+Europe,Iceland,,Reykjavik,2,7,2018,32.8
+North America,US,Montana,Billings,2,14,2020,32.6
+Europe,Switzerland,,Geneva,11,30,2012,36.6
+Asia,China,,Guangzhou,7,21,2015,80.8
+Australia/South Pacific,Australia,,Brisbane,11,6,2019,69.5
+North America,US,Utah,Salt Lake City,9,7,2016,70.5
+Africa,Senegal,,Dakar,11,19,2018,72.6
+Asia,Uzbekistan,,Tashkent,3,13,2014,59.5
+Asia,Nepal,,Katmandu,11,25,2014,54.1
+North America,US,Virginia,Richmond,5,2,2012,75.2
+North America,US,Missouri,Springfield,8,17,2016,75.0
+North America,US,Texas,Amarillo,1,21,2013,33.7
+Asia,Tajikistan,,Dusanbe,7,26,2019,85.3
+South/Central America & Carribean,Equador,,Guayaquil,6,19,2016,79.5
+North America,US,Washington,Spokane,7,30,2013,74.2
+North America,US,Ohio,Akron Canton,6,1,2018,73.8
+Europe,Norway,,Oslo,6,2,2011,58.9
+Africa,Central African Republic,,Bangui,5,31,2019,75.6
+North America,US,Florida,Orlando,4,27,2010,66.8
+North America,US,Ohio,Cleveland,5,24,2014,60.0
+North America,US,West Virginia,Charleston,12,2,2019,38.7
+North America,US,Washington,Yakima,11,19,2018,26.5
+North America,US,Montana,Billings,1,19,2010,34.2
+Australia/South Pacific,New Zealand,,Auckland,3,30,2018,66.7
+North America,US,Louisiana,New Orleans,3,6,2010,53.5
+North America,US,Massachusetts,Boston,10,27,2017,52.7
+North America,US,North Dakota,Bismarck,2,3,2014,12.0
+North America,US,South Carolina,Charleston,4,14,2018,69.1
+Europe,Germany,,Hamburg,11,10,2010,41.6
+North America,US,District of Columbia,Washington,1,9,2015,31.0
+South/Central America & Carribean,Belize,,Belize City,8,25,2017,86.7
+North America,US,Iowa,Des Moines,10,4,2014,43.7
+North America,US,Arkansas,Fort Smith,7,5,2017,78.5
+Asia,Philippines,,Manila,10,24,2014,81.6
+Asia,Japan,,Osaka,1,20,2019,45.2
+North America,US,Connecticut,Bridgeport,2,14,2011,39.9
+North America,US,Arizona,Phoenix,6,2,2014,93.9
+North America,US,Arizona,Phoenix,1,27,2011,61.8
+North America,US,Virginia,Norfolk,1,21,2020,33.5
+North America,US,Tennessee,Knoxville,11,13,2017,50.6
+North America,US,Florida,Orlando,11,8,2016,70.5
+Asia,China,,Shanghai,4,6,2017,62.7
+North America,US,California,Fresno,12,5,2012,57.3
+North America,US,North Carolina,Asheville,4,1,2013,52.6
+Europe,Iceland,,Reykjavik,7,17,2014,51.6
+Europe,United Kingdom,,London,7,17,2013,76.4
+North America,US,Washington,Seattle,9,16,2014,66.6
+South/Central America & Carribean,Guatemala,,Guatemala City,4,22,2020,71.6
+North America,US,South Carolina,Columbia,1,13,2016,42.5
+Asia,Japan,,Osaka,3,22,2014,46.4
+North America,US,Arizona,Phoenix,5,19,2017,74.0
+North America,US,Alaska,Anchorage,3,18,2012,19.0
+Africa,Malawi,,Lilongwe,8,7,2011,69.3
+Africa,Central African Republic,,Bangui,2,6,2017,83.6
+Middle East,Jordan,,Amman,11,24,2012,56.0
+South/Central America & Carribean,Barbados,,Bridgetown,5,11,2012,80.4
+North America,US,Pennsylvania,Philadelphia,3,5,2016,36.0
+Europe,Romania,,Bucharest,5,19,2012,56.8
+North America,US,Arkansas,Little Rock,4,26,2020,61.4
+North America,US,Pennsylvania,Pittsburgh,5,16,2010,59.7
+North America,US,Missouri,Kansas City,11,21,2018,43.4
+Asia,Pakistan,,Islamabad,6,10,2019,-99
+North America,US,New York,Rochester,9,4,2016,62.6
+North America,US,Wyoming,Cheyenne,9,29,2014,53.4
+Europe,Spain,,Barcelona,9,19,2014,76.1
+North America,US,Vermont,Burlington,11,19,2015,54.4
+North America,US,Maryland,Baltimore,7,10,2010,77.0
+Europe,Switzerland,,Bern,11,21,2012,34.9
+North America,US,New Jersey,Newark,1,30,2013,47.0
+Asia,Myanmar (Burma),,Rangoon,4,21,2020,89.8
+North America,US,Arkansas,Little Rock,12,24,2017,40.9
+Europe,Yugoslavia,,Belgrade,6,13,2013,68.0
+Europe,France,,Paris,4,14,2013,65.6
+Asia,Pakistan,,Islamabad,12,30,2015,-99
+Africa,Kenya,,Nairobi,6,4,2010,-99
+North America,Mexico,,Guadalajara,10,25,2018,68.2
+North America,US,Texas,San Angelo,4,6,2018,75.0
+North America,US,Florida,Miami Beach,2,20,2013,72.5
+North America,US,Nebraska,Lincoln,4,30,2012,54.6
+North America,US,Washington,Spokane,9,16,2011,57.0
+Asia,Kyrgyzstan,,Bishkek,8,9,2012,81.4
+Europe,Latvia,,Riga,5,15,2010,63.7
+North America,US,New Jersey,Atlantic City,10,2,2011,55.3
+North America,US,Michigan,Flint,3,25,2010,43.6
+North America,US,Texas,Waco,5,31,2011,85.5
+Africa,Togo,,Lome,9,15,2014,79.8
+North America,US,Iowa,Des Moines,8,9,2011,76.0
+Australia/South Pacific,New Zealand,,Auckland,6,10,2016,60.6
+North America,US,North Dakota,Fargo,1,19,2020,-2.4
+North America,US,Georgia,Savannah,3,2,2014,56.7
+North America,US,Colorado,Pueblo,12,14,2011,30.2
+North America,US,Wyoming,Casper,4,11,2018,56.7
+North America,US,Utah,Salt Lake City,1,27,2013,32.8
+North America,US,New York,Rochester,3,2,2016,24.0
+North America,US,Nebraska,Lincoln,7,1,2014,73.9
+Asia,Singapore,,Singapore,10,11,2013,81.6
+North America,US,Texas,San Antonio,8,3,2014,83.5
+North America,US,Illinois,Peoria,6,14,2017,81.9
+Asia,Mongolia,,Ulan-bator,8,10,2013,65.3
+Middle East,United Arab Emirates,,Dubai,3,27,2019,74.8
+North America,US,Kentucky,Paducah,1,10,2011,30.0
+North America,US,Tennessee,Chattanooga,10,13,2012,65.0
+Africa,Gabon,,Libreville,8,11,2015,75.5
+Europe,Spain,,Bilbao,1,27,2010,36.9
+North America,US,Indiana,Indianapolis,7,19,2011,85.9
+Asia,Kazakhstan,,Almaty,2,3,2020,38.3
+Africa,Zambia,,Lusaka,10,16,2010,82.2
+Africa,Ethiopia,,Addis Ababa,10,10,2017,61.9
+North America,US,North Carolina,Asheville,8,10,2013,72.7
+North America,US,Tennessee,Memphis,1,31,2018,43.7
+North America,US,Colorado,Colorado Springs,8,9,2017,64.7
+North America,US,North Carolina,Raleigh Durham,4,26,2010,69.1
+North America,US,Illinois,Springfield,11,8,2013,38.0
+North America,US,Indiana,South Bend,3,25,2015,40.3
+North America,US,Alaska,Anchorage,6,25,2013,62.4
+Europe,Macedonia,,Skopje,11,14,2014,55.9
+Europe,Denmark,,Copenhagen,5,2,2012,53.8
+North America,US,Montana,Billings,11,9,2013,41.0
+Asia,Taiwan,,Taipei,7,2,2019,83.8
+Middle East,Saudi Arabia,,Dhahran,9,5,2019,98.7
+North America,US,Oregon,Eugene,9,2,2019,68.7
+Africa,Uganda,,Kampala,3,22,2015,75.2
+North America,US,Tennessee,Knoxville,3,24,2012,60.4
+North America,US,Georgia,Macon,9,26,2014,68.2
+North America,Canada,,Quebec,12,1,2011,32.9
+North America,US,Texas,Amarillo,11,2,2016,62.6
+North America,US,Georgia,Savannah,10,27,2012,69.6
+North America,US,Massachusetts,Boston,8,27,2011,73.4
+North America,US,Texas,Dallas Ft Worth,4,14,2018,60.1
+Europe,Hungary,,Budapest,6,29,2018,71.8
+Middle East,United Arab Emirates,,Abu Dhabi,1,20,2010,68.6
+North America,US,Tennessee,Memphis,9,25,2016,85.8
+North America,US,Kentucky,Lexington,4,5,2020,59.8
+South/Central America & Carribean,Venezuela,,Caracas,3,4,2019,80.9
+North America,US,Massachusetts,Boston,11,3,2019,48.7
+Europe,Romania,,Bucharest,11,30,2015,41.2
+Europe,Germany,,Munich,12,24,2016,40.8
+Europe,Italy,,Milan,4,2,2018,50.0
+North America,US,Idaho,Pocatello,11,28,2014,50.2
+North America,US,Connecticut,Hartford Springfield,9,6,2018,79.0
+South/Central America & Carribean,Brazil,,Sao Paulo,11,15,2014,62.3
+North America,US,Oklahoma,Tulsa,4,15,2019,61.5
+North America,US,Pennsylvania,Allentown,12,27,2017,19.9
+North America,US,Arizona,Phoenix,12,26,2017,53.4
+Africa,Madagascar,,Antananarivo,6,9,2017,65.8
+North America,US,New York,Buffalo,9,6,2012,74.2
+North America,Mexico,,Mexico City,11,22,2015,60.9
+North America,US,Colorado,Grand Junction,8,17,2019,82.4
+Europe,Slovakia,,Bratislava,12,23,2016,28.7
+Middle East,Syria,,Damascus,9,19,2017,78.2
+Asia,China,,Shenyang,2,18,2014,22.1
+North America,US,Indiana,South Bend,7,10,2012,75.0
+North America,US,West Virginia,Elkins,7,19,2012,72.5
+Africa,Gabon,,Libreville,4,11,2011,80.6
+North America,US,Michigan,Detroit,12,3,2011,37.1
+North America,US,New York,New York City,11,14,2014,39.3
+North America,US,Ohio,Youngstown,2,26,2015,10.8
+Europe,Spain,,Barcelona,7,23,2013,79.6
+North America,US,New York,Rochester,8,10,2011,69.0
+Africa,Uganda,,Kampala,6,18,2017,70.6
+North America,US,West Virginia,Elkins,11,20,2017,34.2
+North America,US,Utah,Salt Lake City,10,27,2017,51.1
+Africa,Kenya,,Nairobi,11,3,2017,64.0
+Europe,Switzerland,,Geneva,5,1,2014,51.1
+Europe,Ireland,,Dublin,5,4,2015,50.4
+North America,US,Colorado,Pueblo,12,30,2011,38.6
+South/Central America & Carribean,Haiti,,Port au Prince,5,17,2013,86.9
+Middle East,Bahrain,,Manama,6,29,2013,95.4
+North America,US,Maryland,Washington DC,3,25,2016,66.4
+North America,US,New York,Rochester,5,30,2014,61.0
+Europe,Romania,,Bucharest,9,22,2013,59.0
+North America,US,Colorado,Denver,12,30,2019,18.5
+North America,US,Kansas,Goodland,6,27,2017,70.1
+North America,US,Arkansas,Little Rock,9,26,2010,66.9
+Europe,Italy,,Milan,6,25,2014,66.6
+North America,US,Texas,Amarillo,6,10,2015,77.7
+Europe,Austria,,Vienna,3,5,2018,29.5
+Europe,Finland,,Helsinki,3,21,2019,37.3
+Europe,Ukraine,,Kiev,9,22,2015,60.3
+North America,US,Nevada,Reno,7,15,2018,84.1
+North America,US,Alaska,Fairbanks,3,27,2016,34.9
+North America,US,Wisconsin,Milwaukee,9,27,2011,57.6
+North America,US,Ohio,Toledo,1,26,2012,31.7
+North America,US,Wisconsin,Milwaukee,4,13,2016,38.3
+North America,US,Texas,Houston,7,3,2011,84.5
+North America,US,Texas,Dallas Ft Worth,8,14,2018,78.7
+North America,US,Arkansas,Little Rock,12,4,2016,43.2
+Middle East,Qatar,,Doha,4,21,2014,83.9
+South/Central America & Carribean,Uruguay,,Montvideo,1,23,2020,73.6
+Africa,Algeria,,Algiers,3,28,2011,59.4
+North America,US,Oregon,Medford,5,21,2016,54.5
+North America,US,Tennessee,Chattanooga,2,27,2018,48.5
+North America,US,Maryland,Washington DC,11,15,2018,37.5
+Australia/South Pacific,Australia,,Sydney,10,2,2019,69.4
+Europe,Italy,,Milan,2,25,2013,34.5
+Europe,Spain,,Madrid,4,1,2020,48.9
+North America,US,Massachusetts,Boston,5,5,2019,49.7
+Africa,Guinea-Bissau,,Bissau,2,20,2015,78.5
+Asia,Laos,,Vientiane,10,4,2019,77.6
+Europe,Hungary,,Budapest,11,6,2012,45.5
+Middle East,United Arab Emirates,,Abu Dhabi,10,10,2015,87.9
+North America,US,South Carolina,Charleston,2,12,2019,58.2
+Asia,China,,Shanghai,4,18,2014,59.2
+Africa,Tunisia,,Tunis,9,18,2014,86.0
+North America,US,Iowa,Des Moines,2,2,2011,8.5
+North America,US,North Dakota,Bismarck,9,3,2010,58.2
+North America,US,Arkansas,Fort Smith,9,25,2014,68.6
+North America,US,Maryland,Baltimore,9,6,2017,65.8
+South/Central America & Carribean,Honduras,,Tegucigalpa,9,13,2012,72.1
+North America,US,Missouri,Springfield,2,18,2012,42.8
+North America,US,Indiana,Indianapolis,6,27,2017,61.9
+North America,US,Florida,Tallahassee,3,17,2018,64.4
+Europe,Norway,,Oslo,1,27,2017,29.5
+North America,US,Texas,Midland Odessa,12,11,2017,46.7
+North America,US,Pennsylvania,Erie,10,22,2012,53.0
+Asia,India,,Delhi,4,20,2015,91.1
+Europe,Poland,,Warsaw,7,20,2014,67.6
+North America,US,Oregon,Eugene,11,30,2016,46.0
+North America,Canada,,Vancouver,5,27,2011,52.9
+North America,US,Colorado,Pueblo,2,20,2020,19.8
+North America,US,Mississippi,Jackson,2,13,2015,37.3
+South/Central America & Carribean,Barbados,,Bridgetown,1,14,2017,75.4
+Africa,Benin,,Cotonou,7,11,2014,81.4
+Asia,North Korea,,Pyongyang,12,12,2014,20.3
+North America,US,North Carolina,Charlotte,1,24,2014,21.8
+North America,US,New Jersey,Newark,4,20,2011,52.9
+North America,US,Virginia,Roanoke,4,4,2011,65.6
+Europe,Poland,,Warsaw,5,5,2013,61.4
+North America,US,Colorado,Grand Junction,2,16,2013,32.9
+North America,US,North Dakota,Bismarck,11,1,2019,37.3
+South/Central America & Carribean,Costa Rica,,San Jose,2,23,2018,73.6
+Europe,Germany,,Hamburg,4,26,2010,53.2
+North America,US,Oklahoma,Tulsa,12,12,2017,44.0
+North America,US,Oregon,Eugene,6,5,2018,59.2
+North America,US,Pennsylvania,Allentown,9,6,2015,72.1
+North America,US,New York,Albany,8,29,2012,66.5
+South/Central America & Carribean,Peru,,Lima,8,9,2015,64.9
+Europe,France,,Paris,12,7,2018,50.0
+North America,US,Massachusetts,Boston,1,4,2020,46.6
+North America,US,Washington,Spokane,12,16,2014,32.1
+North America,US,Indiana,Fort Wayne,6,26,2010,75.9
+North America,US,Kansas,Topeka,5,24,2017,56.9
+North America,US,Washington,Spokane,12,26,2017,13.9
+North America,US,Louisiana,New Orleans,5,18,2012,79.9
+Europe,Switzerland,,Bern,11,16,2019,34.9
+Africa,Zambia,,Lusaka,11,14,2010,79.1
+North America,US,Arkansas,Fort Smith,8,28,2010,79.8
+Europe,Hungary,,Budapest,11,22,2013,47.4
+North America,US,Texas,Waco,12,30,2013,33.7
+North America,US,Connecticut,Hartford Springfield,6,5,2019,69.9
+North America,US,Texas,Abilene,5,28,2013,77.0
+North America,US,Idaho,Pocatello,10,19,2019,41.5
+Asia,Pakistan,,Islamabad,5,22,2017,80.6
+Europe,Yugoslavia,,Belgrade,8,30,2016,73.5
+North America,US,Washington,Seattle,1,6,2017,28.9
+Middle East,Saudi Arabia,,Riyadh,12,24,2018,57.7
+Europe,Ireland,,Dublin,5,11,2020,42.8
+Africa,Congo,,Brazzaville,4,13,2015,80.6
+Asia,Japan,,Sapporo,8,11,2015,74.3
+North America,US,Minnesota,Minneapolis St. Paul,6,15,2015,74.5
+North America,US,Ohio,Toledo,7,25,2012,72.5
+North America,US,Kentucky,Louisville,10,6,2010,60.4
+Middle East,Bahrain,,Manama,11,17,2011,77.2
+Asia,China,,Shanghai,6,16,2014,74.3
+Africa,Mozambique,,Maputo,11,16,2011,-99
+North America,US,New York,New York City,4,10,2018,43.2
+North America,US,Tennessee,Memphis,7,12,2012,78.0
+South/Central America & Carribean,Haiti,,Port au Prince,5,5,2012,81.3
+South/Central America & Carribean,Honduras,,Tegucigalpa,12,30,2012,68.9
+South/Central America & Carribean,Belize,,Belize City,1,19,2017,79.6
+South/Central America & Carribean,Nicaragua,,Managua,4,25,2011,85.3
+Middle East,Lebanon,,Beirut,8,29,2019,83.9
+Asia,Sri Lanka,,Colombo,12,5,2013,77.4
+Africa,Mauritania,,Nouakchott,10,11,2013,82.6
+North America,US,Ohio,Cleveland,12,4,2018,34.3
+North America,US,California,Sacramento,10,25,2010,59.2
+Asia,Turkmenistan,,Ashabad,9,25,2013,81.0
+Europe,Czech Republic,,Prague,3,30,2011,49.1
+Europe,Slovakia,,Bratislava,3,14,2017,44.8
+Africa,Namibia,,Windhoek,12,15,2010,67.6
+North America,US,Michigan,Sault Ste Marie,8,22,2019,60.5
+South/Central America & Carribean,Costa Rica,,San Jose,10,16,2015,73.1
+North America,US,Georgia,Macon,11,30,2015,60.2
+North America,US,District of Columbia,Washington,4,15,2010,57.2
+North America,US,Pennsylvania,Allentown,12,31,2010,33.8
+Middle East,Oman,,Muscat,2,12,2011,-99
+Australia/South Pacific,New Zealand,,Auckland,11,1,2015,55.7
+North America,US,Florida,Jacksonville,4,28,2012,73.6
+North America,US,Pennsylvania,Pittsburgh,5,30,2016,71.4
+North America,US,Kansas,Topeka,8,5,2018,86.9
+North America,US,Massachusetts,Boston,9,9,2011,66.8
+North America,US,Oklahoma,Oklahoma City,5,31,2014,74.2
+North America,US,New York,Syracuse,7,20,2018,71.4
+North America,US,New Hampshire,Concord,11,23,2016,35.1
+North America,US,Indiana,Indianapolis,9,16,2018,78.4
+Europe,Belgium,,Brussels,3,7,2014,47.3
+North America,US,Oregon,Eugene,2,26,2020,45.7
+North America,US,Tennessee,Nashville,12,8,2019,48.4
+North America,US,Tennessee,Chattanooga,7,6,2012,81.4
+North America,US,Iowa,Des Moines,9,22,2014,60.7
+North America,US,North Carolina,Asheville,5,4,2020,71.5
+North America,US,Pennsylvania,Wilkes Barre,4,21,2010,54.8
+North America,US,Georgia,Macon,3,7,2011,43.5
+North America,US,Kentucky,Louisville,2,28,2011,56.3
+North America,US,Texas,Abilene,8,25,2015,84.9
+Asia,Sri Lanka,,Colombo,2,24,2016,83.5
+South/Central America & Carribean,Equador,,Quito,11,23,2014,-99
+North America,US,California,San Diego,1,6,2019,57.4
+North America,Canada,,Vancouver,6,25,2012,58.8
+North America,US,Texas,Houston,10,30,2019,65.1
+North America,US,Missouri,Springfield,5,29,2015,69.3
+North America,US,California,Los Angeles,8,12,2016,69.2
+South/Central America & Carribean,Colombia,,Bogota,5,26,2015,59.6
+North America,US,Alabama,Mobile,11,12,2011,49.7
+Africa,Egypt,,Cairo,6,16,2018,94.7
+North America,US,Maine,Caribou,4,11,2016,28.1
+North America,US,North Carolina,Charlotte,10,29,2012,49.5
+Europe,The Netherlands,,Amsterdam,7,8,2013,66.6
+North America,US,Idaho,Pocatello,3,11,2013,43.4
+North America,US,Georgia,Atlanta,7,21,2018,78.3
+North America,US,New York,Rochester,7,21,2015,71.8
+North America,US,New York,Albany,3,14,2012,52.5
+North America,US,Missouri,Springfield,10,22,2010,62.6
+North America,US,Iowa,Sioux City,12,3,2012,48.0
+Africa,South Africa,,Capetown,7,26,2012,54.7
+Europe,United Kingdom,,Belfast,8,13,2011,61.4
+Asia,Singapore,,Singapore,5,9,2019,85.9
+North America,US,Nebraska,North Platte,3,21,2020,29.3
+Asia,Nepal,,Katmandu,8,4,2018,72.0
+North America,US,District of Columbia,Washington,6,7,2016,77.7
+Middle East,Qatar,,Doha,9,7,2012,96.2
+Asia,China,,Guangzhou,11,12,2019,73.8
+Africa,South Africa,,Capetown,7,4,2012,50.9
+Africa,Morocco,,Rabat,3,22,2011,55.4
+Africa,Nigeria,,Niamey,11,16,2015,81.9
+North America,US,Connecticut,Hartford Springfield,11,4,2018,45.9
+Africa,Mauritania,,Nouakchott,8,8,2013,84.8
+South/Central America & Carribean,Brazil,,Sao Paulo,9,11,2012,71.2
+Europe,Czech Republic,,Prague,8,7,2018,77.2
+North America,US,Tennessee,Chattanooga,10,1,2010,68.3
+North America,US,Texas,San Antonio,10,29,2016,73.0
+North America,US,Ohio,Cleveland,1,15,2018,16.0
+Africa,Gabon,,Libreville,6,20,2012,76.4
+Africa,Namibia,,Windhoek,3,4,2010,73.9
+North America,US,California,Fresno,9,9,2014,78.3
+Africa,Algeria,,Algiers,11,4,2012,73.2
+Middle East,Kuwait,,Kuwait,4,13,2019,77.5
+North America,US,West Virginia,Charleston,3,3,2019,36.7
+North America,US,Florida,Orlando,4,18,2012,73.8
+North America,US,New York,Buffalo,1,8,2020,29.8
+North America,US,Texas,Abilene,6,27,2015,80.2
+Middle East,Turkey,,Istanbul,1,30,2011,37.1
+Middle East,Saudi Arabia,,Dhahran,3,23,2019,73.5
+North America,US,Maryland,Baltimore,6,2,2015,62.1
+North America,US,Texas,Abilene,1,11,2019,51.7
+North America,US,Tennessee,Chattanooga,5,20,2016,66.5
+Europe,Ireland,,Dublin,11,22,2013,34.9
+North America,US,Tennessee,Nashville,10,24,2015,69.9
+Asia,China,,Shanghai,2,5,2020,45.2
+North America,US,West Virginia,Charleston,5,3,2013,66.0
+North America,US,Tennessee,Chattanooga,5,14,2018,79.0
+North America,US,Illinois,Rockford,1,2,2011,16.5
+Africa,Gambia,,Banjul,6,12,2010,85.0
+North America,US,Ohio,Akron Canton,1,4,2020,41.2
+Europe,Spain,,Bilbao,1,5,2016,48.6
+North America,US,West Virginia,Charleston,4,2,2018,42.4
+North America,US,Ohio,Toledo,4,16,2011,50.1
+North America,Canada,,Calgary,1,12,2012,28.5
+North America,US,Arizona,Phoenix,5,4,2011,82.3
+Africa,Malawi,,Lilongwe,12,21,2012,71.0
+South/Central America & Carribean,Brazil,,Brasilia,3,18,2017,73.6
+Asia,Kazakhstan,,Almaty,6,30,2018,79.3
+North America,US,Colorado,Grand Junction,3,13,2010,39.9
+Europe,Italy,,Rome,12,19,2012,44.6
+North America,US,California,Fresno,8,1,2015,86.5
+North America,US,Wisconsin,Milwaukee,5,9,2010,45.6
+Asia,Singapore,,Singapore,1,12,2016,84.2
+Africa,Gambia,,Banjul,5,20,2010,83.1
+North America,US,Vermont,Burlington,10,22,2019,52.8
+North America,US,Maine,Portland,8,20,2014,64.9
+Asia,North Korea,,Pyongyang,4,26,2019,47.8
+North America,US,North Carolina,Raleigh Durham,6,17,2013,76.7
+North America,Canada,,Winnipeg,1,9,2013,25.2
+North America,US,North Carolina,Greensboro,12,1,2016,57.5
+Europe,Latvia,,Riga,1,30,2014,6.1
+North America,US,Colorado,Pueblo,9,13,2012,55.8
+North America,US,Indiana,South Bend,6,20,2012,83.6
+Africa,Senegal,,Dakar,11,11,2019,79.3
+North America,US,Texas,Austin,6,17,2012,82.5
+North America,US,North Dakota,Fargo,3,28,2018,37.3
+North America,US,Kentucky,Lexington,3,13,2018,33.4
+Europe,Yugoslavia,,Belgrade,2,3,2020,51.9
+South/Central America & Carribean,Uruguay,,Montvideo,6,16,2016,48.3
+Africa,Senegal,,Dakar,5,29,2011,73.4
+Europe,Spain,,Bilbao,11,29,2017,44.4
+North America,US,Hawaii,Honolulu,5,23,2013,78.0
+Europe,Ukraine,,Kiev,7,9,2018,72.9
+Asia,Kyrgyzstan,,Bishkek,10,22,2016,36.3
+North America,US,Connecticut,Hartford Springfield,5,21,2010,70.4
+Africa,Mauritania,,Nouakchott,5,15,2010,83.6
+Asia,Sri Lanka,,Colombo,10,9,2012,81.4
+Asia,Vietnam,,Hanoi,11,6,2017,73.3
+Middle East,Syria,,Damascus,1,13,2017,45.0
+Europe,The Netherlands,,Amsterdam,2,20,2019,46.0
+Europe,Italy,,Rome,7,19,2017,74.0
+Africa,Gambia,,Banjul,7,20,2019,80.8
+North America,US,Louisiana,New Orleans,9,18,2017,79.6
+Africa,Nigeria,,Niamey,11,18,2019,89.2
+North America,US,Texas,Houston,4,17,2010,70.0
+North America,US,Colorado,Colorado Springs,7,21,2018,79.5
+Europe,Spain,,Barcelona,1,2,2017,45.0
+North America,US,New Jersey,Newark,2,15,2011,35.9
+North America,US,Pennsylvania,Allentown,2,23,2018,37.7
+North America,US,Florida,West Palm Beach,9,13,2018,83.0
+Europe,France,,Bordeaux,3,10,2019,54.0
+North America,US,Texas,San Antonio,12,3,2011,65.1
+Europe,Macedonia,,Skopje,10,24,2017,45.9
+North America,US,Texas,Corpus Christi,7,25,2014,84.0
+North America,US,Texas,Amarillo,7,4,2013,73.3
+Europe,Russia,,Moscow,3,9,2019,36.7
+North America,US,New Jersey,Newark,12,10,2010,26.7
+North America,US,North Carolina,Raleigh Durham,3,8,2011,43.9
+Europe,France,,Bordeaux,1,22,2014,43.1
+North America,US,North Carolina,Raleigh Durham,12,4,2019,45.5
+Africa,Gabon,,Libreville,1,1,2014,82.2
+North America,US,New York,New York City,3,19,2012,59.3
+North America,US,Ohio,Cincinnati,8,25,2018,72.9
+North America,US,Maryland,Baltimore,2,26,2016,36.8
+North America,US,Florida,Jacksonville,7,9,2015,81.9
+North America,US,Oregon,Medford,3,27,2010,47.1
+North America,US,Texas,Austin,8,18,2013,80.1
+North America,US,Pennsylvania,Pittsburgh,4,13,2019,60.4
+Australia/South Pacific,Australia,,Sydney,7,28,2016,51.5
+North America,Canada,,Winnipeg,3,18,2010,38.2
+Africa,Tunisia,,Tunis,1,20,2017,52.3
+North America,US,Louisiana,New Orleans,10,10,2016,77.7
+North America,US,Georgia,Savannah,1,21,2020,37.2
+North America,US,Nebraska,Omaha,2,14,2020,12.4
+Middle East,Bahrain,,Manama,1,18,2016,64.0
+Australia/South Pacific,New Zealand,,Auckland,6,1,2015,60.9
+North America,US,Kansas,Goodland,6,25,2019,74.5
+South/Central America & Carribean,Bolivia,,La Paz,10,7,2010,47.6
+Europe,Croatia,,Zagreb,6,12,2018,79.9
+North America,US,District of Columbia,Washington,1,23,2012,33.7
+North America,US,Missouri,Kansas City,2,5,2017,38.0
+Europe,Switzerland,,Geneva,9,24,2010,58.7
+North America,US,Rhode Island,Rhode Island,12,22,2014,37.1
+Africa,Gabon,,Libreville,6,6,2012,78.9
+Middle East,Lebanon,,Beirut,11,10,2017,70.4
+North America,US,Tennessee,Knoxville,2,10,2014,36.8
+Asia,North Korea,,Pyongyang,6,27,2017,76.7
+North America,US,Indiana,Indianapolis,2,6,2016,29.7
+Asia,Pakistan,,Islamabad,9,10,2014,80.9
+North America,US,North Carolina,Charlotte,1,10,2019,38.1
+North America,US,South Dakota,Sioux Falls,8,10,2019,74.0
+Asia,Japan,,Tokyo,4,29,2019,60.2
+Middle East,Bahrain,,Manama,8,1,2010,95.3
+Africa,Gabon,,Libreville,6,9,2013,79.5
+South/Central America & Carribean,Cuba,,Havana,12,28,2016,72.5
+Europe,Bulgaria,,Sofia,9,15,2015,69.5
+North America,US,Maryland,Baltimore,2,10,2020,44.5
+North America,US,Texas,Midland Odessa,1,10,2016,34.0
+North America,US,North Carolina,Greensboro,2,2,2014,50.5
+Middle East,United Arab Emirates,,Abu Dhabi,11,17,2012,77.5
+Africa,Kenya,,Nairobi,11,9,2018,71.3
+North America,US,Maryland,Washington DC,7,4,2016,70.3
+North America,Mexico,,Monterrey,4,4,2014,81.3
+Middle East,United Arab Emirates,,Dubai,5,5,2019,91.1
+Middle East,Saudi Arabia,,Dhahran,2,16,2014,67.2
+North America,US,Kansas,Topeka,7,26,2015,82.8
+North America,US,Florida,Jacksonville,2,14,2018,56.1
+Asia,India,,Chennai (Madras),5,4,2019,93.2
+North America,US,New York,Rochester,6,14,2010,67.6
+North America,US,Nebraska,North Platte,7,31,2019,74.8
+North America,US,New Hampshire,Concord,12,30,2012,24.3
+North America,US,North Carolina,Charlotte,11,25,2015,46.2
+Europe,Denmark,,Copenhagen,1,17,2015,36.9
+North America,US,Louisiana,New Orleans,2,3,2016,64.5
+North America,US,New York,New York City,11,7,2016,49.0
+North America,US,New York,Buffalo,1,21,2012,20.6
+Africa,Egypt,,Cairo,5,13,2013,79.9
+North America,US,Arizona,Tucson,2,12,2018,62.4
+Asia,Uzbekistan,,Tashkent,2,12,2017,33.1
+Asia,Japan,,Tokyo,10,27,2014,64.1
+North America,US,Wyoming,Cheyenne,1,10,2020,20.8
+North America,US,Texas,Austin,5,27,2014,67.2
+North America,US,Idaho,Pocatello,3,25,2011,38.0
+Europe,United Kingdom,,London,11,6,2018,54.7
+North America,US,Ohio,Columbus,1,16,2018,15.9
+North America,US,Minnesota,Minneapolis St. Paul,3,17,2018,36.1
+North America,US,Washington,Seattle,12,15,2018,46.3
+North America,US,Oregon,Eugene,10,27,2017,50.2
+Europe,Iceland,,Reykjavik,12,5,2013,13.4
+Europe,United Kingdom,,London,11,6,2013,54.1
+North America,US,Pennsylvania,Erie,2,14,2012,32.7
+North America,US,Kansas,Topeka,8,3,2013,77.7
+Europe,Ireland,,Dublin,10,18,2017,48.0
+North America,US,District of Columbia,Washington,7,13,2011,85.5
+North America,US,Nebraska,North Platte,8,28,2016,74.3
+Asia,China,,Shanghai,5,17,2016,70.2
+Africa,Mozambique,,Maputo,10,10,2012,77.4
+North America,US,Pennsylvania,Wilkes Barre,7,22,2016,81.1
+North America,US,Pennsylvania,Erie,2,16,2012,39.8
+Europe,Ukraine,,Kiev,11,26,2011,35.9
+North America,US,Kentucky,Paducah,12,28,2017,17.3
+Europe,France,,Bordeaux,7,4,2015,75.6
+North America,US,Oregon,Portland,10,30,2012,59.2
+North America,US,Florida,Orlando,6,20,2015,80.6
+North America,US,Texas,Houston,12,29,2012,43.0
+North America,US,Texas,Dallas Ft Worth,3,20,2013,57.9
+North America,US,Tennessee,Nashville,10,7,2014,67.5
+North America,US,New Hampshire,Concord,12,5,2011,40.2
+North America,US,Alaska,Anchorage,6,24,2018,54.6
+Europe,United Kingdom,,Belfast,11,15,2011,51.1
+North America,US,Massachusetts,Boston,2,22,2017,42.6
+Asia,Pakistan,,Islamabad,1,4,2015,51.9
+North America,Canada,,Winnipeg,8,18,2012,61.2
+Middle East,Saudi Arabia,,Riyadh,8,24,2016,100.0
+Africa,Mauritania,,Nouakchott,12,17,2016,67.9
+North America,US,Rhode Island,Rhode Island,12,2,2015,43.5
+Middle East,Kuwait,,Kuwait,5,26,2016,91.1
+North America,US,California,Sacramento,8,31,2012,65.2
+Europe,Italy,,Rome,5,9,2010,58.9
+Europe,Poland,,Warsaw,12,1,2010,6.4
+North America,US,Arizona,Phoenix,9,23,2018,91.5
+North America,US,District of Columbia,Washington,8,16,2010,80.7
+North America,US,Louisiana,New Orleans,12,25,2016,68.7
+Asia,Tajikistan,,Dusanbe,5,22,2012,68.0
+Europe,Hungary,,Budapest,8,24,2014,63.0
+Europe,Macedonia,,Skopje,3,25,2013,50.1
+Europe,United Kingdom,,Belfast,9,19,2019,57.6
+North America,US,Texas,Houston,2,5,2015,51.0
+North America,US,West Virginia,Elkins,4,5,2013,44.4
+Europe,Albania,,Tirana,9,1,2013,73.4
+North America,US,West Virginia,Charleston,12,22,2015,57.0
+South/Central America & Carribean,Uruguay,,Montvideo,6,11,2019,57.6
+Asia,Uzbekistan,,Tashkent,2,17,2014,41.3
+Asia,Philippines,,Manila,10,25,2013,82.1
+North America,US,Alabama,Montgomery,4,16,2010,68.9
+North America,US,Missouri,St Louis,6,3,2018,75.1
+North America,US,Indiana,Indianapolis,3,7,2010,39.0
+North America,US,Georgia,Savannah,9,27,2010,74.1
+South/Central America & Carribean,Uruguay,,Montvideo,10,16,2010,58.8
+North America,US,North Dakota,Fargo,5,8,2019,49.0
+North America,US,Colorado,Colorado Springs,1,4,2019,40.6
+Asia,Singapore,,Singapore,1,30,2014,79.1
+North America,US,Georgia,Macon,12,29,2010,37.9
+Africa,Malawi,,Lilongwe,5,31,2012,72.4
+North America,US,North Dakota,Bismarck,12,27,2017,-12.9
+Australia/South Pacific,Australia,,Brisbane,5,21,2012,64.0
+North America,US,Wyoming,Cheyenne,1,14,2017,32.5
+Middle East,Qatar,,Doha,5,7,2016,89.8
+North America,US,District of Columbia,Washington,3,2,2014,42.2
+Africa,Central African Republic,,Bangui,4,3,2013,85.6
+Europe,Denmark,,Copenhagen,2,6,2010,29.4
+South/Central America & Carribean,Bolivia,,La Paz,12,19,2012,48.1
+North America,US,Colorado,Denver,6,16,2014,70.3
+South/Central America & Carribean,Suriname,,Paramaribo,7,21,2018,79.9
+North America,US,Tennessee,Memphis,9,12,2014,67.1
+North America,US,Indiana,Indianapolis,7,25,2012,85.0
+North America,US,Utah,Salt Lake City,3,8,2019,40.9
+North America,US,Michigan,Detroit,11,25,2012,32.3
+Africa,Ethiopia,,Addis Ababa,2,4,2013,64.1
+North America,US,Pennsylvania,Pittsburgh,7,6,2012,83.5
+North America,US,Montana,Billings,9,27,2016,68.0
+North America,US,Michigan,Flint,3,16,2013,30.1
+Europe,Macedonia,,Skopje,3,12,2012,38.1
+North America,US,New York,New York City,3,21,2010,54.6
+North America,US,Nebraska,Omaha,12,22,2011,31.8
+Europe,Switzerland,,Geneva,1,2,2015,31.3
+North America,US,New York,New York City,6,15,2013,71.2
+Africa,Morocco,,Rabat,1,27,2018,49.6
+North America,US,Minnesota,Duluth,2,22,2020,26.9
+North America,US,Ohio,Toledo,7,23,2018,69.0
+North America,US,Alaska,Fairbanks,6,4,2010,63.9
+North America,US,West Virginia,Charleston,12,26,2013,35.7
+North America,US,Nebraska,North Platte,6,25,2013,77.1
+North America,US,Georgia,Savannah,7,4,2010,75.6
+Asia,Japan,,Tokyo,1,2,2011,44.7
+South/Central America & Carribean,Nicaragua,,Managua,10,15,2010,82.7
+Asia,China,,Chengdu,12,28,2011,45.8
+Europe,The Netherlands,,Amsterdam,10,9,2013,56.0
+Asia,China,,Beijing,3,18,2012,35.3
+South/Central America & Carribean,Nicaragua,,Managua,9,16,2011,79.6
+South/Central America & Carribean,Brazil,,Sao Paulo,9,13,2014,66.9
+North America,US,Florida,Tallahassee,7,3,2014,84.7
+Middle East,Kuwait,,Kuwait,5,14,2015,98.3
+Asia,South Korea,,Seoul,2,15,2013,24.4
+North America,US,District of Columbia,Washington,6,30,2013,80.2
+North America,US,Idaho,Pocatello,9,8,2014,65.2
+South/Central America & Carribean,Brazil,,Sao Paulo,9,9,2017,73.8
+South/Central America & Carribean,Bahamas,,Nassau,3,6,2010,65.3
+North America,US,Idaho,Pocatello,6,10,2011,51.4
+North America,US,Montana,Billings,10,16,2013,41.8
+Europe,Switzerland,,Bern,3,9,2013,45.1
+Asia,Singapore,,Singapore,7,22,2018,85.0
+North America,Canada,,Regina,4,26,2018,48.6
+North America,Canada,,Quebec,8,3,2012,75.8
+Europe,Romania,,Bucharest,3,15,2018,50.1
+North America,US,Wyoming,Casper,5,27,2017,48.3
+Europe,Croatia,,Zagreb,7,6,2012,80.8
+Middle East,United Arab Emirates,,Abu Dhabi,6,18,2018,91.4
+Asia,Laos,,Vientiane,9,23,2018,84.5
+Asia,Laos,,Vientiane,4,14,2010,92.3
+North America,US,Florida,West Palm Beach,8,1,2015,79.0
+South/Central America & Carribean,Uruguay,,Montvideo,9,18,2010,51.3
+North America,US,Alabama,Montgomery,9,10,2010,83.2
+Europe,Portugal,,Lisbon,10,26,2017,68.7
+North America,US,Idaho,Boise,10,29,2019,31.3
+Asia,Kyrgyzstan,,Bishkek,2,3,2011,39.4
+Middle East,Turkey,,Istanbul,5,22,2010,61.4
+Middle East,Qatar,,Doha,3,3,2019,65.3
+North America,US,Georgia,Savannah,3,17,2010,53.3
+Asia,Laos,,Vientiane,5,7,2015,88.1
+Africa,Algeria,,Algiers,3,25,2013,56.1
+Africa,South Africa,,Capetown,5,13,2018,59.8
+Africa,Nigeria,,Lagos,7,29,2016,78.6
+North America,US,Alaska,Juneau,1,18,2018,27.1
+Europe,Slovakia,,Bratislava,8,16,2012,71.5
+North America,US,Colorado,Pueblo,11,21,2013,37.1
+Europe,Italy,,Rome,7,22,2019,77.4
+Europe,The Netherlands,,Amsterdam,5,11,2011,57.8
+South/Central America & Carribean,Colombia,,Bogota,4,14,2019,58.6
+Europe,Russia,,Moscow,6,6,2018,48.5
+North America,US,New York,Albany,8,4,2019,72.3
+Africa,Guinea,,Conakry,3,1,2017,82.2
+Africa,Morocco,,Rabat,6,9,2011,64.7
+North America,US,Wyoming,Casper,6,19,2010,59.5
+Asia,Taiwan,,Taipei,6,18,2013,85.5
+North America,US,Texas,Midland Odessa,12,28,2013,46.4
+Europe,Latvia,,Riga,3,20,2015,36.7
+Middle East,Oman,,Muscat,11,16,2013,78.6
+North America,US,Ohio,Cincinnati,5,18,2012,65.0
+North America,US,Montana,Billings,12,28,2012,21.2
+Europe,Hungary,,Budapest,10,30,2016,46.6
+Asia,India,,Chennai (Madras),1,7,2018,75.6
+South/Central America & Carribean,Panama,,Panama City,9,26,2014,78.9
+North America,US,Vermont,Burlington,1,23,2013,-1.3
+North America,US,West Virginia,Elkins,5,1,2013,60.7
+Australia/South Pacific,New Zealand,,Auckland,6,17,2018,56.3
+Europe,Hungary,,Budapest,8,1,2014,75.9
+North America,US,Colorado,Denver,7,15,2014,67.4
+North America,US,Michigan,Grand Rapids,9,26,2017,75.2
+North America,US,Minnesota,Duluth,5,16,2019,54.1
+Africa,Namibia,,Windhoek,3,25,2018,71.3
+South/Central America & Carribean,Panama,,Panama City,8,8,2014,79.9
+North America,US,Minnesota,Duluth,1,1,2020,14.5
+North America,US,Washington,Yakima,5,16,2015,67.1
+Africa,Zambia,,Lusaka,1,28,2013,74.6
+North America,US,Texas,Abilene,7,25,2017,84.1
+North America,US,Kentucky,Paducah,8,11,2011,74.4
+North America,US,Washington,Seattle,3,16,2017,45.4
+North America,US,Georgia,Savannah,7,3,2010,75.5
+North America,US,Connecticut,Hartford Springfield,9,29,2015,67.2
+North America,US,Texas,El Paso,11,9,2010,64.8
+North America,US,Ohio,Dayton,8,15,2012,70.8
+Asia,India,,Calcutta,9,30,2015,88.7
+North America,US,Hawaii,Honolulu,2,8,2010,75.9
+North America,US,Pennsylvania,Allentown,6,22,2014,70.4
+North America,US,Oregon,Medford,9,7,2010,63.1
+North America,US,Ohio,Dayton,12,17,2011,30.5
+Europe,Yugoslavia,,Belgrade,5,27,2015,55.0
+Middle East,Lebanon,,Beirut,11,1,2012,77.4
+North America,US,Arizona,Phoenix,7,25,2011,87.3
+Europe,Czech Republic,,Prague,7,26,2014,70.3
+North America,US,Michigan,Flint,10,24,2011,53.6
+Asia,India,,Chennai (Madras),2,18,2014,80.3
+North America,US,South Dakota,Sioux Falls,6,6,2019,74.5
+Asia,China,,Beijing,12,22,2015,27.6
+North America,Canada,,Edmonton,2,26,2013,25.1
+North America,US,Illinois,Springfield,1,11,2012,38.5
+Europe,Switzerland,,Zurich,4,7,2011,62.7
+South/Central America & Carribean,Brazil,,Brasilia,2,14,2014,72.8
+North America,US,North Carolina,Charlotte,4,9,2014,58.0
+North America,US,North Carolina,Raleigh Durham,8,31,2013,77.6
+North America,US,Illinois,Springfield,11,8,2012,43.8
+North America,US,Illinois,Rockford,12,22,2019,37.6
+North America,US,Tennessee,Nashville,2,1,2017,49.7
+North America,US,Georgia,Atlanta,1,9,2016,49.6
+North America,US,Illinois,Peoria,10,31,2015,52.0
+Asia,China,,Shenyang,6,14,2018,66.0
+North America,US,Iowa,Sioux City,3,19,2010,40.0
+Middle East,Syria,,Damascus,6,17,2013,76.9
+North America,US,West Virginia,Elkins,9,7,2012,71.8
+North America,US,North Carolina,Charlotte,8,23,2010,80.6
+North America,US,Mississippi,Tupelo,6,2,2013,73.0
+Europe,Ireland,,Dublin,4,30,2011,52.2
+Europe,Switzerland,,Zurich,5,18,2013,57.6
+North America,US,Idaho,Boise,7,23,2012,82.8
+South/Central America & Carribean,Barbados,,Bridgetown,6,19,2015,82.4
+Europe,France,,Bordeaux,1,25,2019,46.3
+North America,US,Ohio,Youngstown,12,17,2010,19.9
+North America,US,Pennsylvania,Erie,3,31,2014,34.3
+Asia,Turkmenistan,,Ashabad,8,25,2018,81.5
+North America,US,Texas,Lubbock,9,11,2013,75.1
+North America,US,Arkansas,Little Rock,6,21,2013,83.1
+South/Central America & Carribean,Barbados,,Bridgetown,6,23,2012,81.2
+North America,US,New York,Albany,4,1,2015,35.7
+Africa,Senegal,,Dakar,7,6,2018,81.3
+North America,US,Wyoming,Casper,3,24,2019,42.2
+North America,US,California,Sacramento,11,26,2012,49.6
+North America,US,South Carolina,Charleston,5,13,2010,68.9
+Middle East,United Arab Emirates,,Dubai,12,29,2011,67.6
+North America,US,Florida,Tampa St. Petersburg,12,21,2019,68.3
+Africa,Madagascar,,Antananarivo,3,30,2012,70.1
+North America,US,New York,New York City,6,15,2014,67.6
+North America,US,Vermont,Burlington,2,20,2013,29.7
+Europe,Switzerland,,Bern,12,29,2013,36.9
+North America,US,Louisiana,Lake Charles,5,24,2015,77.0
+North America,US,Ohio,Cleveland,11,19,2013,37.9
+Australia/South Pacific,Australia,,Canberra,1,26,2013,71.4
+South/Central America & Carribean,Brazil,,Rio de Janeiro,3,19,2016,80.5
+Africa,Nigeria,,Lagos,8,4,2012,77.4
+Asia,Philippines,,Manila,11,26,2011,83.4
+Europe,Switzerland,,Zurich,11,28,2019,46.3
+Africa,Gabon,,Libreville,5,14,2018,81.6
+Asia,China,,Beijing,12,14,2017,26.4
+Asia,Indonesia,,Jakarta,10,22,2016,83.1
+North America,US,Ohio,Toledo,8,31,2011,69.0
+North America,US,Georgia,Savannah,1,5,2019,55.5
+North America,US,Oregon,Portland,11,14,2018,42.9
+Europe,Austria,,Vienna,2,2,2010,30.3
+North America,US,New York,Syracuse,6,1,2019,64.6
+North America,US,Pennsylvania,Philadelphia,2,24,2019,41.6
+North America,US,Michigan,Flint,12,9,2018,20.0
+North America,Canada,,Ottawa,4,28,2014,49.9
+North America,US,Pennsylvania,Wilkes Barre,1,31,2017,24.9
+North America,US,District of Columbia,Washington,2,28,2017,55.2
+North America,US,New York,Buffalo,3,22,2014,35.8
+North America,US,Illinois,Rockford,2,27,2011,26.8
+North America,US,North Dakota,Bismarck,3,18,2010,38.7
+Africa,Gabon,,Libreville,5,15,2015,82.9
+North America,US,Texas,Dallas Ft Worth,3,5,2020,54.8
+North America,US,Idaho,Boise,9,11,2017,73.4
+North America,US,Iowa,Des Moines,3,22,2020,34.5
+Asia,India,,Chennai (Madras),12,20,2019,80.4
+North America,US,Florida,Tallahassee,2,18,2011,56.2
+Asia,Japan,,Sapporo,2,27,2014,34.1
+North America,US,Alabama,Montgomery,1,11,2010,28.3
+Asia,Malaysia,,Kuala Lumpur,8,10,2017,80.3
+North America,Canada,,Ottawa,9,25,2012,56.5
+North America,Canada,,Quebec,7,27,2016,70.5
+Europe,Czech Republic,,Prague,12,5,2015,40.4
+Middle East,United Arab Emirates,,Dubai,5,13,2015,94.6
+Asia,Kyrgyzstan,,Bishkek,5,1,2015,58.8
+North America,US,Illinois,Chicago,6,3,2016,70.1
+North America,US,Alabama,Montgomery,7,20,2013,78.6
+Africa,Senegal,,Dakar,12,2,2013,79.0
+Europe,The Netherlands,,Amsterdam,8,5,2011,65.6
+Middle East,Lebanon,,Beirut,6,7,2018,81.2
+North America,US,Arizona,Tucson,9,27,2015,83.0
+North America,US,Tennessee,Memphis,8,5,2016,88.3
+North America,Canada,,Edmonton,1,29,2014,18.0
+North America,US,Colorado,Grand Junction,11,3,2013,44.0
+North America,US,Michigan,Flint,9,19,2013,68.8
+North America,US,Maryland,Washington DC,2,2,2017,45.7
+Asia,Mongolia,,Ulan-bator,9,14,2011,33.5
+Europe,Czech Republic,,Prague,1,3,2015,33.8
+Asia,Kyrgyzstan,,Bishkek,8,2,2010,74.9
+North America,US,Vermont,Burlington,10,12,2010,44.1
+Africa,Mozambique,,Maputo,12,7,2016,80.8
+North America,US,Maryland,Baltimore,9,29,2010,63.5
+Africa,Togo,,Lome,9,21,2017,81.1
+South/Central America & Carribean,Brazil,,Rio de Janeiro,9,18,2018,78.5
+North America,US,Kentucky,Paducah,9,11,2010,75.3
+Africa,Central African Republic,,Bangui,5,14,2015,77.9
+North America,US,Arkansas,Fort Smith,12,31,2015,34.7
+North America,US,California,Sacramento,5,21,2010,58.8
+North America,US,Kentucky,Paducah,11,26,2019,55.5
+North America,US,North Dakota,Fargo,4,4,2014,33.6
+Africa,Zambia,,Lusaka,2,5,2011,73.2
+North America,US,Florida,Miami Beach,6,30,2011,79.2
+North America,US,Alaska,Fairbanks,10,10,2016,35.5
+North America,US,Arkansas,Fort Smith,2,24,2010,33.7
+North America,US,Tennessee,Knoxville,6,13,2011,79.5
+Asia,Taiwan,,Taipei,5,24,2013,78.2
+North America,US,Illinois,Springfield,8,17,2016,77.7
+North America,US,Mississippi,Jackson,1,5,2010,25.5
+North America,US,Ohio,Toledo,5,6,2014,48.8
+Australia/South Pacific,Australia,,Perth,7,20,2012,53.9
+North America,US,Georgia,Columbus,4,18,2014,55.5
+North America,US,New Mexico,Albuquerque,3,3,2020,46.8
+North America,US,Maryland,Washington DC,8,6,2010,80.1
+Europe,Ireland,,Dublin,8,3,2018,67.4
+North America,US,Kansas,Goodland,7,12,2017,81.3
+Europe,Spain,,Barcelona,6,6,2019,65.8
+South/Central America & Carribean,Bahamas,,Nassau,11,6,2018,81.1
+Middle East,Syria,,Damascus,8,28,2019,84.4
+North America,US,Indiana,Indianapolis,10,24,2017,47.5
+North America,US,North Dakota,Fargo,1,23,2011,-6.7
+North America,US,Indiana,Indianapolis,6,16,2013,72.2
+North America,US,Wisconsin,Milwaukee,9,7,2018,63.7
+Europe,Italy,,Milan,4,18,2011,56.1
+Middle East,Jordan,,Amman,5,14,2013,63.1
+North America,US,Washington,Yakima,9,18,2013,60.6
+North America,US,Wyoming,Cheyenne,7,4,2012,76.0
+North America,US,Florida,Miami Beach,10,26,2019,82.6
+North America,US,Wisconsin,Green Bay,7,19,2013,84.9
+South/Central America & Carribean,Uruguay,,Montvideo,12,8,2016,65.9
+Asia,Japan,,Sapporo,5,9,2015,49.6
+North America,US,Idaho,Boise,10,7,2010,63.6
+North America,US,Arkansas,Fort Smith,3,23,2015,55.5
+North America,US,Oregon,Eugene,7,7,2018,59.4
+North America,US,Nebraska,Lincoln,4,23,2011,52.0
+South/Central America & Carribean,Bahamas,,Nassau,5,10,2016,78.8
+North America,US,Maryland,Washington DC,8,28,2014,81.5
+North America,US,California,Sacramento,3,20,2011,50.1
+North America,US,Washington,Spokane,11,5,2015,35.0
+South/Central America & Carribean,Peru,,Lima,1,17,2015,71.7
+North America,US,New Mexico,Albuquerque,6,4,2014,82.6
+North America,US,North Dakota,Bismarck,1,11,2019,15.3
+North America,US,Virginia,Roanoke,6,11,2013,72.0
+North America,US,North Carolina,Greensboro,4,10,2012,61.2
+North America,US,Pennsylvania,Wilkes Barre,2,23,2014,36.9
+Africa,South Africa,,Capetown,2,10,2014,70.9
+South/Central America & Carribean,Equador,,Guayaquil,8,30,2011,73.6
+North America,US,North Dakota,Bismarck,7,5,2016,72.8
+North America,US,Arkansas,Fort Smith,1,27,2010,40.8
+Africa,Nigeria,,Niamey,3,5,2018,92.6
+North America,US,Alaska,Anchorage,12,30,2012,36.8
+Africa,Madagascar,,Antananarivo,2,27,2018,70.8
+North America,US,Tennessee,Nashville,8,14,2016,79.2
+North America,US,Oregon,Eugene,10,15,2016,55.7
+Europe,Croatia,,Zagreb,10,13,2018,59.5
+North America,US,Ohio,Toledo,8,7,2011,75.8
+North America,US,Texas,El Paso,3,18,2019,54.9
+North America,US,California,Fresno,6,21,2012,85.4
+Europe,Poland,,Warsaw,8,31,2018,64.8
+Africa,Egypt,,Cairo,7,7,2014,83.5
+Europe,Latvia,,Riga,1,19,2014,9.7
+North America,US,Virginia,Richmond,5,21,2011,70.1
+Middle East,Saudi Arabia,,Riyadh,7,24,2015,97.6
+North America,US,Texas,Abilene,12,15,2011,51.3
+North America,US,Virginia,Roanoke,8,16,2010,76.1
+North America,US,Louisiana,Lake Charles,6,20,2014,81.1
+North America,US,Nevada,Las Vegas,7,5,2014,98.4
+North America,US,Idaho,Pocatello,7,3,2017,73.2
+Europe,United Kingdom,,Belfast,7,3,2010,62.0
+North America,US,Mississippi,Tupelo,1,30,2013,61.2
+Asia,Myanmar (Burma),,Rangoon,3,13,2019,82.9
+North America,US,Iowa,Sioux City,12,27,2017,-3.5
+North America,US,Ohio,Dayton,6,6,2017,64.8
+Middle East,Turkey,,Istanbul,4,12,2017,54.4
+North America,US,Texas,Abilene,8,11,2011,91.8
+North America,US,Vermont,Burlington,5,9,2019,49.1
+North America,US,Nebraska,North Platte,6,1,2014,67.2
+Europe,Switzerland,,Geneva,1,18,2019,34.0
+North America,US,Texas,El Paso,2,5,2018,60.4
+North America,US,Iowa,Des Moines,6,14,2016,82.1
+North America,US,North Carolina,Raleigh Durham,3,2,2013,38.4
+Europe,Hungary,,Budapest,7,20,2016,69.3
+North America,US,Michigan,Sault Ste Marie,11,8,2017,29.8
+North America,US,Ohio,Dayton,12,7,2018,26.6
+Asia,Kazakhstan,,Almaty,10,6,2019,60.5
+Asia,Taiwan,,Taipei,7,9,2014,90.7
+Middle East,United Arab Emirates,,Dubai,12,3,2010,73.9
+North America,US,Florida,Tampa St. Petersburg,3,4,2015,73.3
+Australia/South Pacific,New Zealand,,Auckland,3,22,2017,68.9
+Asia,Malaysia,,Kuala Lumpur,7,6,2013,83.3
+South/Central America & Carribean,Belize,,Belize City,7,18,2019,85.6
+North America,US,New York,Buffalo,11,26,2011,52.7
+North America,US,Arkansas,Little Rock,8,27,2016,82.5
+Middle East,Lebanon,,Beirut,3,13,2012,65.4
+Africa,Guinea,,Conakry,3,29,2016,84.9
+North America,US,South Dakota,Sioux Falls,6,3,2011,77.3
+Africa,Tanzania,,Dar Es Salaam,12,5,2017,82.5
+Africa,Tanzania,,Dar Es Salaam,6,2,2016,77.7
+North America,US,Minnesota,Duluth,4,8,2015,32.1
+North America,US,Hawaii,Honolulu,8,6,2019,81.5
+Middle East,United Arab Emirates,,Abu Dhabi,9,23,2017,95.5
+Africa,Ivory Coast,,Abidjan,4,11,2018,79.1
+Asia,Sri Lanka,,Colombo,8,4,2012,82.7
+South/Central America & Carribean,Brazil,,Rio de Janeiro,9,7,2011,72.7
+Europe,Switzerland,,Zurich,8,23,2010,69.4
+North America,US,Texas,Dallas Ft Worth,6,10,2017,77.9
+North America,US,Pennsylvania,Pittsburgh,12,22,2010,28.3
+North America,US,Florida,Miami Beach,8,13,2010,86.3
+North America,US,Texas,Midland Odessa,4,16,2014,60.8
+North America,US,Washington,Spokane,5,18,2012,53.1
+North America,US,Texas,Amarillo,6,30,2014,82.9
+North America,US,New York,New York City,8,9,2012,81.2
+North America,US,Kentucky,Louisville,2,8,2010,24.5
+Europe,Slovakia,,Bratislava,5,22,2018,65.1
+Africa,Mozambique,,Maputo,9,19,2013,86.0
+North America,US,Texas,San Angelo,10,25,2017,56.5
+North America,US,Kentucky,Lexington,7,9,2018,79.5
+South/Central America & Carribean,Venezuela,,Caracas,7,10,2014,80.1
+Europe,Finland,,Helsinki,11,27,2011,43.6
+Asia,Indonesia,,Jakarta,12,26,2017,84.0
+North America,Canada,,Regina,10,19,2010,43.2
+Australia/South Pacific,Australia,,Sydney,5,24,2013,52.2
+Europe,Austria,,Vienna,9,2,2011,69.4
+South/Central America & Carribean,Costa Rica,,San Jose,11,14,2014,70.3
+North America,US,Michigan,Sault Ste Marie,2,7,2011,15.3
+North America,US,Nevada,Las Vegas,9,14,2013,83.9
+Europe,Bulgaria,,Sofia,7,23,2012,77.2
+North America,US,South Carolina,Columbia,10,1,2013,67.7
+North America,US,Georgia,Macon,6,10,2013,73.6
+Asia,Japan,,Sapporo,11,14,2010,41.5
+Asia,China,,Beijing,1,7,2017,33.7
+North America,US,New Mexico,Albuquerque,4,24,2018,67.0
+North America,US,Colorado,Grand Junction,1,3,2014,17.8
+Asia,Uzbekistan,,Tashkent,1,10,2013,47.3
+North America,US,Alabama,Birmingham,3,20,2015,60.7
+Asia,China,,Shanghai,11,7,2012,57.4
+North America,US,Ohio,Columbus,10,26,2016,47.3
+North America,US,Georgia,Macon,12,30,2015,70.3
+Africa,Benin,,Cotonou,1,26,2013,85.1
+Australia/South Pacific,Australia,,Perth,3,29,2014,67.1
+Africa,Central African Republic,,Bangui,12,27,2018,75.7
+Europe,Italy,,Milan,11,10,2012,47.7
+North America,US,New York,Buffalo,11,12,2013,29.8
+North America,US,Florida,Orlando,8,24,2019,82.7
+Africa,Gambia,,Banjul,5,8,2018,76.3
+Europe,Spain,,Bilbao,12,12,2014,56.1
+North America,US,Alaska,Fairbanks,1,10,2013,-4.8
+Europe,Denmark,,Copenhagen,8,17,2014,56.7
+North America,Canada,,Quebec,9,15,2013,54.2
+North America,US,Maine,Caribou,8,3,2018,74.6
+Asia,South Korea,,Seoul,5,31,2011,65.1
+Africa,Kenya,,Nairobi,5,7,2011,-99
+Europe,The Netherlands,,Amsterdam,1,4,2013,48.6
+North America,US,California,San Diego,2,18,2012,56.1
