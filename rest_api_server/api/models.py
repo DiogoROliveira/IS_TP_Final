@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 class Temperature(models.Model):
     region = models.CharField(max_length=255)
-    country = models.CharField(max_length=255)
+    country_id = models.ForeignKey('Country', on_delete=models.CASCADE)
     state = models.CharField(max_length=255)
     city = models.CharField(max_length=255)
     month = models.IntegerField()
@@ -15,3 +15,10 @@ class Temperature(models.Model):
 
     def __str__(self):
         return f"{self.region}, {self.country}, {self.state}, {self.city}, {self.month}, {self.day}, {self.year}, {self.avg_temperature}, {self.latitude}, {self.longitude}"
+    
+
+class Country(models.Model):
+    name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name

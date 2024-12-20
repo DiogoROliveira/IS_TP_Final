@@ -14,7 +14,6 @@ from lxml import etree
 from lxml.etree import Element, SubElement
 import pandas as pd
 
-# BUUUUUUHHH
 
 # Configure logging
 LOG_FORMAT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
@@ -29,12 +28,13 @@ def csv_to_xml(csv_file, xml_file, objname):
     except FileNotFoundError:
         raise FileNotFoundError(f"Arquivo {csv_file} não encontrado.")
 
+    # Ensure latitude and longitude columns are present in the DataFrame
     df['latitude'] = None
     df['longitude'] = None
 
     for idx, row in df.iterrows():
         if 'City' in row: 
-            lat, lon = get_lat_lon_from_city(row['City'])
+            lat, lon = get_lat_lon_from_city(row['City'], row['Country'])
             df.at[idx, 'latitude'] = lat
             df.at[idx, 'longitude'] = lon
 
@@ -65,12 +65,13 @@ def validate_xml(xml_file, xsd_file):
         schema = xmlschema.XMLSchema(xsd_file)
         return schema.is_valid(xml_file)
     except Exception as e:
-        logger.error(f"XML Validation Error: {str(e)}")
+        logger.error(f"Could not validate XML: {str(e)}")
         return False
+
 
 cache = {}
 
-def get_lat_lon_from_city(city):
+def get_lat_lon_from_city(city, country):
     try:
         if city in cache:
             logger.info(f"Cache hit for city: {city}")
@@ -98,10 +99,26 @@ def get_lat_lon_from_city(city):
             cache[city] = {'lat': lat, 'lon': lon}
             return lat, lon
         else:
-            return None, None
+            params2 = {
+                "q": country,
+                "format": 'json',
+                "limit": 1,
+            }
+            response = requests.get(url, params=params2, headers=headers)
+            response.raise_for_status()
+            data = response.json()
+
+            if data:
+                lat, lon = data[0]['lat'], data[0]['lon']
+                logger.info(f"Latitude: {lat}, Longitude: {lon}")
+                cache[city] = {'lat': lat, 'lon': lon}
+                return lat, lon
+            else:
+                return 0, 0
+
     except Exception as e:
         logger.error(f"Error fetching latitude and longitude: {str(e)}")
-        return None, None
+        return 0, 0
 
 
 # ======================= gRPC Services =======================
@@ -136,7 +153,7 @@ class ImporterService(server_services_pb2_grpc.ImporterServiceServicer):
                     host=RABBITMQ_HOST, 
                     port=RABBITMQ_PORT, 
                     credentials=pika.PlainCredentials(RABBITMQ_USER, RABBITMQ_PW),
-                    heartbeat=120
+                    heartbeat=600
                 )
             )
             rabbit_channel = rabbit_connection.channel()
@@ -176,7 +193,7 @@ class ImporterService(server_services_pb2_grpc.ImporterServiceServicer):
             fill_empty_fields(xml_file)
 
             if not validate_xml(xml_file, os.path.join(MEDIA_PATH, "./schemas/", "schema.xsd")):
-                logger.error(f"XML Validation Error")
+                logger.error(f"XML Validation Failed: {xml_file}")
             else:
                 logger.info(f"XML Validation Success: {xml_file}")
             # ===================================================
