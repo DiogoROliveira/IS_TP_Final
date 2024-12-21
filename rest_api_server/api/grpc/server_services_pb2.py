@@ -24,13 +24,15 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x15server_services.proto\x12\x0fserver_services\"G\n\x11\x46ileUploadRequest\x12\x0c\n\x04\x66ile\x18\x01 \x01(\x0c\x12\x11\n\tfile_mime\x18\x02 \x01(\t\x12\x11\n\tfile_name\x18\x03 \x01(\t\"%\n\x12\x46ileUploadResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\":\n\x17\x46ileUploadChunksRequest\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\x0c\x12\x11\n\tfile_name\x18\x02 \x01(\t\"<\n\x18\x46ileUploadChunksResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\"7\n\rFilterRequest\x12\x11\n\tfile_name\x18\x01 \x01(\t\x12\x13\n\x0bxpath_query\x18\x02 \x01(\t\"&\n\x0e\x46ilterResponse\x12\x14\n\x0cquery_result\x18\x01 \x01(\t2\xd1\x01\n\x0fImporterService\x12T\n\tUploadCSV\x12\".server_services.FileUploadRequest\x1a#.server_services.FileUploadResponse\x12h\n\x0fUploadCSVChunks\x12(.server_services.FileUploadChunksRequest\x1a).server_services.FileUploadChunksResponse(\x01\x32^\n\x0eGroupByService\x12L\n\tFilterXML\x12\x1e.server_services.FilterRequest\x1a\x1f.server_services.FilterResponseb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x15server_services.proto\x12\x0fserver_services\"G\n\x11\x46ileUploadRequest\x12\x0c\n\x04\x66ile\x18\x01 \x01(\x0c\x12\x11\n\tfile_mime\x18\x02 \x01(\t\x12\x11\n\tfile_name\x18\x03 \x01(\t\"%\n\x12\x46ileUploadResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\":\n\x17\x46ileUploadChunksRequest\x12\x0c\n\x04\x64\x61ta\x18\x01 \x01(\x0c\x12\x11\n\tfile_name\x18\x02 \x01(\t\"<\n\x18\x46ileUploadChunksResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\x12\x0f\n\x07message\x18\x02 \x01(\t\"7\n\rFilterRequest\x12\x11\n\tfile_name\x18\x01 \x01(\t\x12\x13\n\x0bxpath_query\x18\x02 \x01(\t\"&\n\x0e\x46ilterResponse\x12\x14\n\x0cquery_result\x18\x01 \x01(\t\"7\n\rSearchRequest\x12\x11\n\tfile_name\x18\x01 \x01(\t\x12\x13\n\x0bsearch_term\x18\x02 \x01(\t\"(\n\x0eSearchResponse\x12\x16\n\x0ematching_nodes\x18\x01 \x03(\t\":\n\x0cGroupRequest\x12\x11\n\tfile_name\x18\x01 \x01(\t\x12\x17\n\x0fgroup_by_xpaths\x18\x02 \x03(\t\"\x8a\x01\n\rGroupResponse\x12\x45\n\x0cgrouped_data\x18\x01 \x03(\x0b\x32/.server_services.GroupResponse.GroupedDataEntry\x1a\x32\n\x10GroupedDataEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x05:\x02\x38\x01\"L\n\x0cOrderRequest\x12\x11\n\tfile_name\x18\x01 \x01(\t\x12\x16\n\x0eorder_by_xpath\x18\x02 \x01(\t\x12\x11\n\tascending\x18\x03 \x01(\x08\"&\n\rOrderResponse\x12\x15\n\rordered_nodes\x18\x01 \x03(\t2\xd1\x01\n\x0fImporterService\x12T\n\tUploadCSV\x12\".server_services.FileUploadRequest\x1a#.server_services.FileUploadResponse\x12h\n\x0fUploadCSVChunks\x12(.server_services.FileUploadChunksRequest\x1a).server_services.FileUploadChunksResponse(\x01\x32\xc2\x02\n\x0eGroupByService\x12L\n\tFilterXML\x12\x1e.server_services.FilterRequest\x1a\x1f.server_services.FilterResponse\x12L\n\tSearchXML\x12\x1e.server_services.SearchRequest\x1a\x1f.server_services.SearchResponse\x12I\n\x08GroupXML\x12\x1d.server_services.GroupRequest\x1a\x1e.server_services.GroupResponse\x12I\n\x08OrderXML\x12\x1d.server_services.OrderRequest\x1a\x1e.server_services.OrderResponseb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'server_services_pb2', _globals)
 if not _descriptor._USE_C_DESCRIPTORS:
   DESCRIPTOR._loaded_options = None
+  _globals['_GROUPRESPONSE_GROUPEDDATAENTRY']._loaded_options = None
+  _globals['_GROUPRESPONSE_GROUPEDDATAENTRY']._serialized_options = b'8\001'
   _globals['_FILEUPLOADREQUEST']._serialized_start=42
   _globals['_FILEUPLOADREQUEST']._serialized_end=113
   _globals['_FILEUPLOADRESPONSE']._serialized_start=115
@@ -43,8 +45,22 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_FILTERREQUEST']._serialized_end=331
   _globals['_FILTERRESPONSE']._serialized_start=333
   _globals['_FILTERRESPONSE']._serialized_end=371
-  _globals['_IMPORTERSERVICE']._serialized_start=374
-  _globals['_IMPORTERSERVICE']._serialized_end=583
-  _globals['_GROUPBYSERVICE']._serialized_start=585
-  _globals['_GROUPBYSERVICE']._serialized_end=679
+  _globals['_SEARCHREQUEST']._serialized_start=373
+  _globals['_SEARCHREQUEST']._serialized_end=428
+  _globals['_SEARCHRESPONSE']._serialized_start=430
+  _globals['_SEARCHRESPONSE']._serialized_end=470
+  _globals['_GROUPREQUEST']._serialized_start=472
+  _globals['_GROUPREQUEST']._serialized_end=530
+  _globals['_GROUPRESPONSE']._serialized_start=533
+  _globals['_GROUPRESPONSE']._serialized_end=671
+  _globals['_GROUPRESPONSE_GROUPEDDATAENTRY']._serialized_start=621
+  _globals['_GROUPRESPONSE_GROUPEDDATAENTRY']._serialized_end=671
+  _globals['_ORDERREQUEST']._serialized_start=673
+  _globals['_ORDERREQUEST']._serialized_end=749
+  _globals['_ORDERRESPONSE']._serialized_start=751
+  _globals['_ORDERRESPONSE']._serialized_end=789
+  _globals['_IMPORTERSERVICE']._serialized_start=792
+  _globals['_IMPORTERSERVICE']._serialized_end=1001
+  _globals['_GROUPBYSERVICE']._serialized_start=1004
+  _globals['_GROUPBYSERVICE']._serialized_end=1326
 # @@protoc_insertion_point(module_scope)

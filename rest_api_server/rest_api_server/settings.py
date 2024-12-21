@@ -138,3 +138,8 @@ GRPC_PORT = os.getenv('GRPC_PORT', '50051')
 GRAPHENE = {
     'SCHEMA': 'rest_api_server.schema.schema'
 }
+
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:8000/', 
+    'http://localhost:3000/',  
+]

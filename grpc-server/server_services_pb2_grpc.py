@@ -154,12 +154,45 @@ class GroupByServiceStub(object):
                 request_serializer=server__services__pb2.FilterRequest.SerializeToString,
                 response_deserializer=server__services__pb2.FilterResponse.FromString,
                 _registered_method=True)
+        self.SearchXML = channel.unary_unary(
+                '/server_services.GroupByService/SearchXML',
+                request_serializer=server__services__pb2.SearchRequest.SerializeToString,
+                response_deserializer=server__services__pb2.SearchResponse.FromString,
+                _registered_method=True)
+        self.GroupXML = channel.unary_unary(
+                '/server_services.GroupByService/GroupXML',
+                request_serializer=server__services__pb2.GroupRequest.SerializeToString,
+                response_deserializer=server__services__pb2.GroupResponse.FromString,
+                _registered_method=True)
+        self.OrderXML = channel.unary_unary(
+                '/server_services.GroupByService/OrderXML',
+                request_serializer=server__services__pb2.OrderRequest.SerializeToString,
+                response_deserializer=server__services__pb2.OrderResponse.FromString,
+                _registered_method=True)
 
 
 class GroupByServiceServicer(object):
     """Missing associated documentation comment in .proto file."""
 
     def FilterXML(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def SearchXML(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GroupXML(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def OrderXML(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -172,6 +205,21 @@ def add_GroupByServiceServicer_to_server(servicer, server):
                     servicer.FilterXML,
                     request_deserializer=server__services__pb2.FilterRequest.FromString,
                     response_serializer=server__services__pb2.FilterResponse.SerializeToString,
+            ),
+            'SearchXML': grpc.unary_unary_rpc_method_handler(
+                    servicer.SearchXML,
+                    request_deserializer=server__services__pb2.SearchRequest.FromString,
+                    response_serializer=server__services__pb2.SearchResponse.SerializeToString,
+            ),
+            'GroupXML': grpc.unary_unary_rpc_method_handler(
+                    servicer.GroupXML,
+                    request_deserializer=server__services__pb2.GroupRequest.FromString,
+                    response_serializer=server__services__pb2.GroupResponse.SerializeToString,
+            ),
+            'OrderXML': grpc.unary_unary_rpc_method_handler(
+                    servicer.OrderXML,
+                    request_deserializer=server__services__pb2.OrderRequest.FromString,
+                    response_serializer=server__services__pb2.OrderResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -201,6 +249,87 @@ class GroupByService(object):
             '/server_services.GroupByService/FilterXML',
             server__services__pb2.FilterRequest.SerializeToString,
             server__services__pb2.FilterResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def SearchXML(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/server_services.GroupByService/SearchXML',
+            server__services__pb2.SearchRequest.SerializeToString,
+            server__services__pb2.SearchResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def GroupXML(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/server_services.GroupByService/GroupXML',
+            server__services__pb2.GroupRequest.SerializeToString,
+            server__services__pb2.GroupResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def OrderXML(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/server_services.GroupByService/OrderXML',
+            server__services__pb2.OrderRequest.SerializeToString,
+            server__services__pb2.OrderResponse.FromString,
             options,
             channel_credentials,
             insecure,

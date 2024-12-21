@@ -244,6 +244,125 @@ class GroupByService(server_services_pb2_grpc.GroupByServiceServicer):
             logger.error(f"Error: {str(e)}", exc_info=True)
             return server_services_pb2.FilterResponse(query_result=str(e))
 
+    def GroupXML(self, request, context):
+        try:
+            # Validar parâmetros
+            if not request.file_name or not request.group_by_xpaths:
+                context.set_code(grpc.StatusCode.INVALID_ARGUMENT)
+                context.set_details('file_name e group_by_xpaths são obrigatórios.')
+                return server_services_pb2.GroupResponse()
+
+            xml_path = os.path.join(MEDIA_PATH, "./xml/")
+            xml_file = os.path.join(xml_path, request.file_name)
+
+            # Validar arquivo XML
+            if not os.path.exists(xml_file):
+                context.set_code(grpc.StatusCode.NOT_FOUND)
+                context.set_details(f'Arquivo não encontrado: {request.file_name}')
+                return server_services_pb2.GroupResponse()
+
+            tree = etree.parse(xml_file)
+            root = tree.getroot()
+
+            # Criar agrupamentos
+            grouped_data = {}
+
+            # Iterar sobre os elementos filhos do root
+            for element in root:
+                # Construir a chave de agrupamento a partir dos XPaths fornecidos
+                key = "-".join(
+                    element.xpath(xpath)[0].text if element.xpath(xpath) else "N/A"
+                    for xpath in request.group_by_xpaths
+                )
+                grouped_data[key] = grouped_data.get(key, 0) + 1
+
+            return server_services_pb2.GroupResponse(grouped_data=grouped_data)
+        except Exception as e:
+            context.set_code(grpc.StatusCode.INTERNAL)
+            context.set_details(str(e))
+            return server_services_pb2.GroupResponse()
+
+    def SearchXML(self, request, context):
+        try:
+            # Validar parâmetros
+            if not request.file_name or not request.search_term:
+                logger.error("Missing body parameters: file_name and/or search_term")
+                raise ValueError("Missing body parameters: file_name and/or search_term")
+
+            xml_path = os.path.join(MEDIA_PATH, "./xml/")
+            xml_file = os.path.join(xml_path, request.file_name)
+
+            # Validar se o arquivo existe
+            if not os.path.exists(xml_file):
+                logger.error(f"File not found: {xml_file}")
+                raise FileNotFoundError(f"File not found: {xml_file}")
+
+            # Buscar no XML
+            tree = etree.parse(xml_file)
+            root = tree.getroot()
+            
+            # Encontrar elementos que contenham o termo de busca
+            results = root.xpath(f"//*[contains(text(), '{request.search_term}')]")
+
+            # Converter os resultados em string XML, retornando o elemento completo
+            matching_nodes = [
+                etree.tostring(el, encoding='unicode', method='xml').strip()
+                for el in results
+                # Garantir que estamos pegando o elemento pai completo
+                if el.getparent() is not None
+            ]
+
+            # Log de sucesso
+            logger.info(f"Search executed successfully: {len(matching_nodes)} matches")
+            return server_services_pb2.SearchResponse(matching_nodes=matching_nodes)
+            
+        except Exception as e:
+            logger.error(f"Error: {str(e)}", exc_info=True)
+            return server_services_pb2.SearchResponse(matching_nodes=[])
+
+    def OrderXML(self, request, context):
+        try:
+            # Validar parâmetros
+            if not request.file_name or not request.order_by_xpath:
+                context.set_code(grpc.StatusCode.INVALID_ARGUMENT)
+                context.set_details('file_name e order_by_xpath são obrigatórios.')
+                return server_services_pb2.OrderResponse()
+
+            xml_path = os.path.join(MEDIA_PATH, "./xml/")
+            xml_file = os.path.join(xml_path, request.file_name)
+
+            if not os.path.exists(xml_file):
+                context.set_code(grpc.StatusCode.NOT_FOUND)
+                context.set_details(f'Arquivo não encontrado: {request.file_name}')
+                return server_services_pb2.OrderResponse()
+
+            tree = etree.parse(xml_file)
+            root = tree.getroot()
+
+            # Selecionar todos os elementos <Temp> diretamente sob o root
+            elements = root.findall('./Temp')
+
+            # Ordenar os elementos com base no filho especificado em order_by_xpath
+            elements_sorted = sorted(
+                elements,
+                key=lambda el: el.find(request.order_by_xpath).text if el.find(request.order_by_xpath) is not None else "",
+                reverse=not request.ascending  # Inverter a ordem se não for ascendente
+            )
+
+            # Converter os elementos ordenados em strings XML completas
+            ordered_nodes = [
+                etree.tostring(el, encoding='unicode', method='xml').strip()
+                for el in elements_sorted
+            ]
+
+            # Retornar os elementos ordenados
+            return server_services_pb2.OrderResponse(ordered_nodes=ordered_nodes)
+        except Exception as e:
+            context.set_code(grpc.StatusCode.INTERNAL)
+            context.set_details(str(e))
+            return server_services_pb2.OrderResponse()
+
+
 # ================== main ==================
 
 def serve():
