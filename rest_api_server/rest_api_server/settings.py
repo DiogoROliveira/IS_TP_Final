@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'rest_api_server.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django_pg8000',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.getenv('DBNAME', 'mydatabase'),
         'USER': os.getenv('DBUSERNAME', 'postgres'),
         'PASSWORD': os.getenv('DBPASSWORD', 'postgres'),
@@ -134,3 +134,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 GRPC_HOST = os.getenv('GRPC_HOST', 'localhost')
 GRPC_PORT = os.getenv('GRPC_PORT', '50051')
+
+GRAPHENE = {
+    'SCHEMA': 'rest_api_server.schema.schema'
+}

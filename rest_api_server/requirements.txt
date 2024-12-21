@@ -1,7 +1,8 @@
 django
 djangorestframework
 django-cors-headers
-django_pg8000
+psycopg2-binary
 grpcio
 grpcio-tools
 graphene-django
+asyncpg

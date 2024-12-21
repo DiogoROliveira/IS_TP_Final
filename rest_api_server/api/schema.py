@@ -1,108 +1,138 @@
 import graphene
 from graphene_django import DjangoObjectType
+from .models import Temperature, Country
 
-from .models import Temperature
+class CountryType(DjangoObjectType):
+    class Meta:
+        model = Country
+        fields = "__all__"
 
 class TemperatureType(DjangoObjectType):
     class Meta:
         model = Temperature
         fields = "__all__"
 
+class CreateCountry(graphene.Mutation):
+    class Arguments:
+        name = graphene.String(required=True)
+    
+    country = graphene.Field(CountryType)
+
+    def mutate(self, info, name):
+        country = Country(name=name)
+        country.save()
+        return CreateCountry(country=country)
 
 class CreateTemperature(graphene.Mutation):
     class Arguments:
-        region = graphene.String(required=True)
-        country = graphene.String(required=True)
-        state = graphene.String(required=True)
-        city = graphene.String(required=True)
-        month = graphene.Int(required=True)
-        day = graphene.Int(required=True)
-        year = graphene.Int(required=True)
-        avg_temperature = graphene.Float(required=True)
-        latitude = graphene.Float(required=True)
-        longitude = graphene.Float(required=True)
+        Region = graphene.String(required=True)
+        Country_id = graphene.Int(required=True) 
+        State = graphene.String(required=True)
+        City = graphene.String(required=True)
+        Month = graphene.Int(required=True)
+        Day = graphene.Int(required=True)
+        Year = graphene.Int(required=True)
+        AvgTemperature = graphene.Float(required=True)
+        Latitude = graphene.Float(required=True)
+        Longitude = graphene.Float(required=True)
     
     temperature = graphene.Field(TemperatureType)
 
-    def mutate(self, info, region, country, state, city, month, day, year, avg_temperature, latitude, longitude):
-        temperature = Temperature(region=region, country=country, state=state, city=city, month=month, day=day, year=year, avg_temperature=avg_temperature, latitude=latitude, longitude=longitude)
-        temperature.save()
-        return CreateTemperature(temperature=temperature)
-    
+    def mutate(self, info, Region, Country_id, State, City, Month, Day, Year, AvgTemperature, Latitude, Longitude):
+        try:
+            country = Country.objects.get(id=Country_id)
+            temperature = Temperature(
+                Region=Region,
+                Country_id=country,
+                State=State,
+                City=City,
+                Month=Month,
+                Day=Day,
+                Year=Year,
+                AvgTemperature=AvgTemperature,
+                Latitude=Latitude,
+                Longitude=Longitude
+            )
+            temperature.save()
+            return CreateTemperature(temperature=temperature)
+        except Country.DoesNotExist:
+            raise Exception("Country not found")
 
 class UpdateTemperature(graphene.Mutation):
     class Arguments:
         id = graphene.Int(required=True)
-        region = graphene.String(required=True)
-        country = graphene.String(required=True)
-        state = graphene.String(required=True)
-        city = graphene.String(required=True)
-        month = graphene.Int(required=True)
-        day = graphene.Int(required=True)
-        year = graphene.Int(required=True)
-        avg_temperature = graphene.Float(required=True)
-        latitude = graphene.Float(required=True)
-        longitude = graphene.Float(required=True)
+        Region = graphene.String()
+        Country_id = graphene.Int()
+        State = graphene.String()
+        City = graphene.String()
+        Month = graphene.Int()
+        Day = graphene.Int()
+        Year = graphene.Int()
+        AvgTemperature = graphene.Float()
+        Latitude = graphene.Float()
+        Longitude = graphene.Float()
     
     temperature = graphene.Field(TemperatureType)
 
-    def mutate(self, info, id, region=None, country=None, state=None, city=None, month=None, day=None, year=None, avg_temperature=None, latitude=None, longitude=None):
+    def mutate(self, info, id, **kwargs):
         try:
             temperature = Temperature.objects.get(id=id)
+            
+            for key, value in kwargs.items():
+                if value is not None:
+                    if key == 'country_id':
+                        country = Country.objects.get(id=value)
+                        setattr(temperature, 'country_id', country)
+                    else:
+                        setattr(temperature, key, value)
+            
+            temperature.save()
+            return UpdateTemperature(temperature=temperature)
         except Temperature.DoesNotExist:
             raise Exception("Temperature not found")
-        
-        if region is not None:
-            temperature.region = region
-        if country is not None:
-            temperature.country = country
-        if state is not None:
-            temperature.state = state
-        if city is not None:
-            temperature.city = city
-        if month is not None:
-            temperature.month = month
-        if day is not None:
-            temperature.day = day
-        if year is not None:
-            temperature.year = year
-        if avg_temperature is not None:
-            temperature.avg_temperature = avg_temperature
-        if latitude is not None:
-            temperature.latitude = latitude
-        if longitude is not None:
-            temperature.longitude = longitude
-        temperature.save()
-        return UpdateTemperature(temperature=temperature)
-    
+        except Country.DoesNotExist:
+            raise Exception("Country not found")
+
 
 class DeleteTemperature(graphene.Mutation):
     class Arguments:
         id = graphene.Int(required=True)
     
-    success = graphene.Boolean()
+    temperature = graphene.Field(TemperatureType)
 
     def mutate(self, info, id):
         try:
             temperature = Temperature.objects.get(id=id)
+            temperature.delete()
+            return DeleteTemperature(temperature=temperature)
         except Temperature.DoesNotExist:
             raise Exception("Temperature not found")
-        
-        temperature.delete()
-        return DeleteTemperature(success=True)
-    
 
 class Query(graphene.ObjectType):
     all_temperatures = graphene.List(TemperatureType)
+    all_countries = graphene.List(CountryType)
+    temperature_by_id = graphene.Field(TemperatureType, id=graphene.Int(required=True))
+    temperatures_by_country = graphene.List(TemperatureType, country_id=graphene.Int(required=True))
 
     def resolve_all_temperatures(self, info):
         return Temperature.objects.all()
-    
+
+    def resolve_all_countries(self, info):
+        return Country.objects.all()
+
+    def resolve_temperature_by_id(self, info, id):
+        try:
+            return Temperature.objects.get(id=id)
+        except Temperature.DoesNotExist:
+            return None
+
+    def resolve_temperatures_by_country(self, info, country_id):
+        return Temperature.objects.filter(country_id=country_id)
 
 class Mutation(graphene.ObjectType):
     create_temperature = CreateTemperature.Field()
+    create_country = CreateCountry.Field()
     update_temperature = UpdateTemperature.Field()
     delete_temperature = DeleteTemperature.Field()
-
 
 schema = graphene.Schema(query=Query, mutation=Mutation)
