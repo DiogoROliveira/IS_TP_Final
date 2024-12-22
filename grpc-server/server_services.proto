@@ -17,8 +17,8 @@ message FileUploadResponse {
 }
 
 message FileUploadChunksRequest {
-    bytes data = 1; // The chunk of the file
-    string file_name = 2; // File name (optional, sent in the first chunk or metadata)
+    bytes data = 1;
+    string file_name = 2; 
 }
 
 message FileUploadChunksResponse {

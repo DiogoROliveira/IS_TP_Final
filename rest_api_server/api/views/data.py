@@ -14,13 +14,15 @@ class GetAllData(APIView):
                 {
                     "id": row[0],
                     "Region": row[1],
-                    "Country": row[2],
+                    "Country_Id": row[2],
                     "State": row[3],
                     "City": row[4],
                     "Month": row[5],
                     "Day": row[6],
                     "Year": row[7],
                     "AvgTemperature": row[8],
+                    "Latitude": row[9],
+                    "Longitude": row[10],
                 }
                 for row in result
             ]

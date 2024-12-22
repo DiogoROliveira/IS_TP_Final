@@ -33,6 +33,8 @@ logger = logging.getLogger()
 
 reassembled_data = []
 
+# ====================== DB Setup ======================
+
 Base = declarative_base()
 
 # DB table models
@@ -102,11 +104,14 @@ def insert_to_db(df, batch_size=1000):
             pool_recycle=1800  
         )
 
+        # create tables
         Base.metadata.create_all(engine)
 
+        # creates empty lat and lon columns
         df['Latitude'] = None
         df['Longitude'] = None
 
+        # populates lat and lon
         for idx, row in df.iterrows():
             if 'City' in row and 'Country' in row: 
                 lat, lon = get_lat_lon_from_city(row['City'], row['Country'])
@@ -116,7 +121,7 @@ def insert_to_db(df, batch_size=1000):
         data_to_insert = df.to_dict('records')
 
         with db_session_scope(engine) as session:
-            # Insert countries first and maintain a mapping
+            # insert countries
             countries = {row['Country'] for row in data_to_insert}
             country_map = {}
 
@@ -124,19 +129,19 @@ def insert_to_db(df, batch_size=1000):
                 stmt = insert(Country).values(name=country).on_conflict_do_nothing()
                 session.execute(stmt)
 
-            session.commit()  # Commit to ensure countries are available
+            session.commit() 
 
-            # Retrieve the country IDs
+            # retrieve countries to map later to temps
             country_map = {
                 country.name: country.id 
                 for country in session.query(Country).all()
             }
 
-            # Replace country name with country ID in the data
+            # map countries to ids in temp data
             for row in data_to_insert:
                 row['Country_id'] = country_map[row.pop('Country')]
 
-            # Insert data into TemperatureData table
+            # insert temps
             for i in range(0, len(data_to_insert), batch_size):
                 batch = data_to_insert[i:i+batch_size]
 
@@ -156,7 +161,7 @@ def insert_to_db(df, batch_size=1000):
         logger.error(f"Error inserting data: {e}")
         raise
 
-
+# ========================================================
 
 cache = {}
 

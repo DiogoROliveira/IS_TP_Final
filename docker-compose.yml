@@ -31,13 +31,13 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - GRPC_PORT=50051
-      - GRPC_HOST=grpc-server
-      - DBNAME=mydatabase
-      - DBUSERNAME=postgres
-      - DBPASSWORD=postgres
-      - DBHOST=db
-      - DBPORT=5432
+      - GRPC_PORT: 50051
+      - GRPC_HOST: grpc-server
+      - DBNAME: mydatabase
+      - DBUSERNAME: postgres
+      - DBPASSWORD: postgres
+      - DBHOST: db
+      - DBPORT: 5432
 
     depends_on:
       - grpc-server

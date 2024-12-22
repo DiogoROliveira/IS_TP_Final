@@ -93,7 +93,6 @@ class UpdateTemperature(graphene.Mutation):
         except Country.DoesNotExist:
             raise Exception("Country not found")
 
-
 class DeleteTemperature(graphene.Mutation):
     class Arguments:
         id = graphene.Int(required=True)

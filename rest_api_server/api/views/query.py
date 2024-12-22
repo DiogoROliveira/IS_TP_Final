@@ -15,7 +15,7 @@ class XPathFilterBy(APIView):
 
         if not file_name or not xpath_query:
             return Response({
-                "error": "Nome do arquivo e consulta XPath são obrigatórios"
+                "error": "File name and xpath query are required"
             }, status=status.HTTP_400_BAD_REQUEST)
         
         channel = grpc.insecure_channel(f'{GRPC_HOST}:{GRPC_PORT}')
@@ -47,7 +47,7 @@ class XPathOrderBy(APIView):
 
         if not file_name or not order_by_xpath:
             return Response({
-                "error": "Nome do arquivo e XPath de ordenação são obrigatórios"
+                "error": "File name and order_by_xpath are required"
             }, status=status.HTTP_400_BAD_REQUEST)
 
         channel = grpc.insecure_channel(f'{GRPC_HOST}:{GRPC_PORT}')
@@ -80,18 +80,18 @@ class XPathGroupBy(APIView):
 
         if not file_name or not group_by_xpaths:
             return Response({
-                "error": "Nome do arquivo e XPaths de agrupamento são obrigatórios"
+                "error": "File name and group_by_xpaths are required"
             }, status=status.HTTP_400_BAD_REQUEST)
 
         if any(xpath.startswith("/") for xpath in group_by_xpaths):
             return Response({
-                "error": "Os XPaths não devem ser caminhos absolutos (começando com / ou //)."
+                "error": "group_by_xpaths must not start with '/' or '//' instead start with './/'. "
             }, status=status.HTTP_400_BAD_REQUEST)
 
 
         if not isinstance(group_by_xpaths, list):
             return Response({
-                "error": "group_by_xpaths deve ser uma lista de strings"
+                "error": "group_by_xpaths must be a string list"
             }, status=status.HTTP_400_BAD_REQUEST)
 
         channel = grpc.insecure_channel(f'{GRPC_HOST}:{GRPC_PORT}')
@@ -105,7 +105,6 @@ class XPathGroupBy(APIView):
         try:
             response = stub.GroupXML(grpc_request)
 
-            # Converte o map para um dicionário Python
             grouped_data = {key: value for key, value in response.grouped_data.items()}
 
             return Response({
@@ -124,7 +123,7 @@ class XPathSearch(APIView):
 
         if not file_name or not search_term:
             return Response({
-                "error": "Nome do arquivo e valor de busca são obrigatórios."
+                "error": "File name and search_term are required."
             }, status=status.HTTP_400_BAD_REQUEST)
 
         channel = grpc.insecure_channel(f'{GRPC_HOST}:{GRPC_PORT}')
@@ -138,7 +137,6 @@ class XPathSearch(APIView):
         try:
             response = stub.SearchXML(grpc_request)
 
-            # Encapsular os resultados em um elemento <SearchResults>
             results = "".join(response.matching_nodes)
             encapsulated_results = f"<SearchResults>{results}</SearchResults>"
 

@@ -3,9 +3,5 @@ pandas
 grpcio
 grpcio-tools
 xmlschema
-saxonche
-pg8000
-celery
 pika
 requests
-aiohttp
