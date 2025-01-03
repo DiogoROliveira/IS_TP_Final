@@ -12,6 +12,12 @@ class TemperatureType(DjangoObjectType):
         model = Temperature
         fields = "__all__"
 
+class CityType(graphene.ObjectType):
+    nome = graphene.String()
+    latitude = graphene.Float()
+    longitude = graphene.Float()
+    id = graphene.ID()
+
 class CreateCountry(graphene.Mutation):
     class Arguments:
         name = graphene.String(required=True)
@@ -112,6 +118,7 @@ class Query(graphene.ObjectType):
     all_countries = graphene.List(CountryType)
     temperature_by_id = graphene.Field(TemperatureType, id=graphene.Int(required=True))
     temperatures_by_country = graphene.List(TemperatureType, country_id=graphene.Int(required=True))
+    cities = graphene.List(CityType, nome=graphene.String())
 
     def resolve_all_temperatures(self, info):
         return Temperature.objects.all()
@@ -127,6 +134,19 @@ class Query(graphene.ObjectType):
 
     def resolve_temperatures_by_country(self, info, country_id):
         return Temperature.objects.filter(country_id=country_id)
+    
+    def resolve_cities(self, info, nome=None):
+        query = Temperature.objects.values('City', 'Latitude', 'Longitude', 'id').distinct()
+        if nome:
+            query = query.filter(City__icontains=nome)
+        return [
+            CityType(
+                nome=city['City'],
+                latitude=city['Latitude'],
+                longitude=city['Longitude'],
+                id=city['id']
+            ) for city in query
+        ]
 
 class Mutation(graphene.ObjectType):
     create_temperature = CreateTemperature.Field()

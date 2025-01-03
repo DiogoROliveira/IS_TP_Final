@@ -31,14 +31,31 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - GRPC_PORT: 50051
-      - GRPC_HOST: grpc-server
-      - DBNAME: mydatabase
-      - DBUSERNAME: postgres
-      - DBPASSWORD: postgres
-      - DBHOST: db
-      - DBPORT: 5432
+      GRPC_PORT: 50051
+      GRPC_HOST: grpc-server
+      DBNAME: mydatabase
+      DBUSERNAME: postgres
+      DBPASSWORD: postgres
+      DBHOST: db
+      DBPORT: 5432
 
+    depends_on:
+      - grpc-server
+      - db
+
+  graphql-server:
+    build: ./graphql_server
+    container_name: graphql-server
+    ports:
+      - "8001:8001"
+    environment:
+      GRPC_PORT: 50051
+      GRPC_HOST: grpc-server
+      DBNAME: mydatabase
+      DBUSERNAME: postgres
+      DBPASSWORD: postgres
+      DBHOST: db
+      DBPORT: 5432
     depends_on:
       - grpc-server
       - db
@@ -54,7 +71,6 @@ services:
       - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
-    restart: always
     
   rabbitmq:
     image: rabbitmq:3.9-management
@@ -64,7 +80,6 @@ services:
     environment:
       RABBITMQ_DEFAULT_USER: guest
       RABBITMQ_DEFAULT_PASS: guest
-    restart: always
 
   worker:
     build: ./worker-rabbit-csv
@@ -85,6 +100,21 @@ services:
       - db
       - grpc-server
 
+  frontend:
+    build: ./is-frontend-template-main
+    ports:
+      - "3000:3000"
+    environment:
+      REST_API_BASE_URL: http://rest-api-server:8000
+      GRAPHQL_API_BASE_URL: http://graphql-server:8001
+      NEXT_PUBLIC_URL: http://frontend:3000
+      CRSF_COOKIE: xQjKRQfI8PMAubfyUWElWsp6k7r9BLaE
+    depends_on:
+      - rest-api-server
+      - graphql-server
+      - grpc-server
+      - rabbitmq
+      - db
 
 volumes:
   grpc-server:
