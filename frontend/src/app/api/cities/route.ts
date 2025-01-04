@@ -11,7 +11,6 @@ export async function POST(req: NextRequest) {
         'X-CSRFToken': `${process.env.CRSF_COOKIE}`,
     }
     
-    /*
     const requestBody = {
         query: `query Cities {
             cities${city.length > 0 ? `(nome: "${city}")` : ``} {
@@ -22,16 +21,15 @@ export async function POST(req: NextRequest) {
             }
         }`
     }
-    */
     
     const options = {
         method: 'POST',
         headers,
-        // body: JSON.stringify(requestBody),
+        body: JSON.stringify(requestBody),
     }
 
     try{
-        const promise = await fetch(`${process.env.GRAPHQL_API_BASE_URL}/graphql/cities/`, options)
+        const promise = await fetch(`${process.env.GRAPHQL_API_BASE_URL}/graphql/`, options)
 
         if(!promise.ok){
             console.log(promise.statusText)

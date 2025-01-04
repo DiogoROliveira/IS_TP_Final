@@ -101,7 +101,7 @@ services:
       - grpc-server
 
   frontend:
-    build: ./is-frontend-template-main
+    build: ./frontend
     ports:
       - "3000:3000"
     environment:

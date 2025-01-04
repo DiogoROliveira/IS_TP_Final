@@ -99,6 +99,34 @@ class UpdateTemperature(graphene.Mutation):
         except Country.DoesNotExist:
             raise Exception("Country not found")
 
+
+class UpdateCity(graphene.Mutation):
+    class Arguments:
+        id = graphene.Int(required=True)
+        nome = graphene.String()
+        latitude = graphene.Float()
+        longitude = graphene.Float()
+
+    city = graphene.Field(CityType)
+
+    def mutate(self, info, id, nome=None, latitude=None, longitude=None):
+        try:
+            temperature = Temperature.objects.get(id=id)
+            if latitude is not None:
+                temperature.Latitude = latitude
+            if longitude is not None:
+                temperature.Longitude = longitude
+            temperature.save()
+            
+            return UpdateCity(city=CityType(
+                id=temperature.id,
+                nome=temperature.City,
+                latitude=temperature.Latitude,
+                longitude=temperature.Longitude
+            ))
+        except Temperature.DoesNotExist:
+            raise Exception("City not found")   
+            
 class DeleteTemperature(graphene.Mutation):
     class Arguments:
         id = graphene.Int(required=True)
@@ -136,7 +164,7 @@ class Query(graphene.ObjectType):
         return Temperature.objects.filter(country_id=country_id)
     
     def resolve_cities(self, info, nome=None):
-        query = Temperature.objects.values('City', 'Latitude', 'Longitude', 'id').distinct()
+        query = Temperature.objects.values('City', 'Latitude', 'Longitude', 'id').distinct('Latitude', 'Longitude')
         if nome:
             query = query.filter(City__icontains=nome)
         return [
@@ -153,5 +181,6 @@ class Mutation(graphene.ObjectType):
     create_country = CreateCountry.Field()
     update_temperature = UpdateTemperature.Field()
     delete_temperature = DeleteTemperature.Field()
+    update_city = UpdateCity.Field()
 
 schema = graphene.Schema(query=Query, mutation=Mutation)

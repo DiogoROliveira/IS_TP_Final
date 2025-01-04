@@ -5,6 +5,8 @@ export async function PUT(req: NextRequest) {
     const request_body  = await req.json()
     const id            = req.nextUrl.pathname.split("/")[3]
 
+    console.log(id, request_body.latitude, request_body.longitude)
+
     const headers = {
         'content-type': 'application/json',
         'Cookie': `csrftoken=${process.env.CRSF_COOKIE}`,
@@ -13,12 +15,12 @@ export async function PUT(req: NextRequest) {
     
     const requestBody = {
         query: `mutation UpdateCity {
-            updateCity(id: "${id}", latitude: "${request_body.latitude}", longitude: "${request_body.longitude}") {
-                city {
-                    id
+            updateCity(id: ${id}, latitude: ${request_body.latitude}, longitude: ${request_body.longitude}) {
+                city {                    
                     nome
                     latitude
                     longitude
+                    id
                 }
             }
         }`
@@ -31,10 +33,10 @@ export async function PUT(req: NextRequest) {
     }
 
     try{
-        const promise = await fetch(`${process.env.GRAPHQL_API_BASE_URL}/graphql/cities/`, options)
+        const promise = await fetch(`${process.env.GRAPHQL_API_BASE_URL}/graphql/`, options)
 
         if(!promise.ok){
-            console.log(promise.statusText)
+            console.log(promise.statusText, promise.status, promise.body)
             return NextResponse.json({status: promise.status, message: promise.statusText}, { status: promise.status }) 
         }
 

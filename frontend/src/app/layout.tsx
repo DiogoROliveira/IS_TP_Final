@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import 'react-toastify/dist/ReactToastify.css';
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
-import { ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
+import { ToastContainer } from "react-toastify";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -18,8 +18,8 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "IS - FINAL",
-  description: "IS final pratical work.",
-}
+  description: "IS final practical work.",
+};
 
 export default function RootLayout({
   children,
@@ -30,24 +30,26 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <title>IS - FINAL</title>
-        <meta name="description" content="IS final pratical work." />
+        <meta name="description" content="IS final practical work." />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white`}
       >
         <AppRouterCacheProvider>
-        <ToastContainer
-          position="top-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
-        ></ToastContainer>
+          {typeof window !== "undefined" && (
+            <ToastContainer
+              position="top-right"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="light"
+            />
+          )}
           {children}
         </AppRouterCacheProvider>
       </body>

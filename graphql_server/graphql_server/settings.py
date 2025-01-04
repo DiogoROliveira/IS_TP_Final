@@ -130,7 +130,7 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 GRAPHENE = {
-    'SCHEMA': 'rest_api_server.schema.schema'
+    'SCHEMA': 'graphql_server.schema.schema'
 }
 
 CSRF_TRUSTED_ORIGINS = [
