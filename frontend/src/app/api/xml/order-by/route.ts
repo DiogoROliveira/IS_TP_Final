@@ -2,13 +2,17 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
     const request_body  = await req.json();
-    const city          = request_body?.city ?? '';
+    const expression    = request_body?.expression ?? '';
+    const ascending     = request_body?.ascending ?? true;
+
+    console.log(expression, ascending);
 
     const requestOptions = {
         method: "POST",
         body: JSON.stringify({
             "file_name":    "tiny.xml",
-            "xpath_query":  `//Temp[contains(City, '${city}')]`
+            "order_by_xpath":  `.//${expression}`,
+            "ascending":    `${ascending}`
         }),
         headers: {
             'content-type': 'application/json'
@@ -16,7 +20,7 @@ export async function POST(req: NextRequest) {
     };
 
     try {
-        const response = await fetch(`${process.env.REST_API_BASE_URL}/api/xml/filter-by`, requestOptions);
+        const response = await fetch(`${process.env.REST_API_BASE_URL}/api/xml/order-by`, requestOptions);
 
         if (!response.ok) {
             console.log(response.statusText);
@@ -55,4 +59,3 @@ function formatXml(xml: string): string {
         return indent + line;
     }).join("\n");
 }
-

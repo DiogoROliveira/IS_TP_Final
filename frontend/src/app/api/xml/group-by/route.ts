@@ -1,14 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
-    const request_body  = await req.json();
-    const city          = request_body?.city ?? '';
+    const request_body      = await req.json();
+    const expression        = request_body?.expression ?? '';
+
+    console.log(expression);
 
     const requestOptions = {
         method: "POST",
         body: JSON.stringify({
             "file_name":    "tiny.xml",
-            "xpath_query":  `//Temp[contains(City, '${city}')]`
+            "group_by_xpaths":  `${expression}`
         }),
         headers: {
             'content-type': 'application/json'
@@ -16,7 +18,7 @@ export async function POST(req: NextRequest) {
     };
 
     try {
-        const response = await fetch(`${process.env.REST_API_BASE_URL}/api/xml/filter-by`, requestOptions);
+        const response = await fetch(`${process.env.REST_API_BASE_URL}/api/xml/group-by`, requestOptions);
 
         if (!response.ok) {
             console.log(response.statusText);
@@ -31,7 +33,7 @@ export async function POST(req: NextRequest) {
         const xmlWithRoot = `<root>${rawXml}</root>`;
 
         const formattedXml = formatXml(xmlWithRoot);
-
+    
         return new Response(formattedXml, {
             headers: { "Content-Type": "application/xml" }
         });
@@ -55,4 +57,3 @@ function formatXml(xml: string): string {
         return indent + line;
     }).join("\n");
 }
-

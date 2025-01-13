@@ -45,6 +45,9 @@ class XPathOrderBy(APIView):
         order_by_xpath = request.data.get('order_by_xpath')
         ascending = request.data.get('ascending', True)
 
+        if isinstance(ascending, str):
+            ascending = ascending.lower() == 'true'
+
         if not file_name or not order_by_xpath:
             return Response({
                 "error": "File name and order_by_xpath are required"
