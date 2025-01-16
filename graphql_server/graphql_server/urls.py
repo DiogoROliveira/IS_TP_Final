@@ -17,7 +17,6 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from graphene_django.views import GraphQLView
-from api.views import CitiesView, UpdateCity
 
 from graphql_server.schema import schema
 

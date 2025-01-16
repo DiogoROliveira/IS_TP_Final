@@ -10,6 +10,6 @@ RUN apt-get update && apt-get install -y \
     apt-get purge -y --auto-remove gcc && \
     rm -rf /var/lib/apt/lists/*
 
-EXPOSE 8003
+EXPOSE 8001
 
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8001"]
