@@ -10,7 +10,7 @@ export async function POST(req: NextRequest) {
     const requestOptions = {
         method: "POST",
         body: JSON.stringify({
-            "file_name":    "tiny.xml",
+            "file_name":    "trimmed.xml",
             "order_by_xpath":  `.//${expression}`,
             "ascending":    `${ascending}`
         }),

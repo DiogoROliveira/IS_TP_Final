@@ -7,7 +7,7 @@ export async function POST(req: NextRequest) {
     const requestOptions = {
         method: "POST",
         body: JSON.stringify({
-            "file_name":    "tiny.xml",
+            "file_name":    "trimmed.xml",
             "xpath_query":  `//Temp[contains(City, '${city}')]`
         }),
         headers: {
