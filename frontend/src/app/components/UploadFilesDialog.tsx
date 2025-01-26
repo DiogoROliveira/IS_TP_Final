@@ -120,23 +120,6 @@ const UploadFilesDialog = React.forwardRef(
                 </Button>
               )}
             </Box>
-            {/* DTD File */}
-            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2, p: 3 }}>
-              <Typography variant="h6">Upload .dtd file</Typography>
-              {dtd_file ? (
-                <>
-                  <Typography variant="body1">Selected File: {dtd_file.name}</Typography>
-                  <Button variant="contained" color="error" onClick={handleDtdRemoveFile}>
-                    Remove File
-                  </Button>
-                </>
-              ) : (
-                <Button variant="contained" component="label">
-                  Select .dtd file
-                  <input type="file" hidden onChange={handleDtdFileChange} accept=".dtd" />
-                </Button>
-              )}
-            </Box>
           </DialogContent>
           <DialogActions>
             <Button onClick={handleClose}>Cancel</Button>
